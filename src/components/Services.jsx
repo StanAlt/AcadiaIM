@@ -1,5 +1,5 @@
-import React from 'react';
-import { Target, TrendingUp, Award, Zap } from 'lucide-react';
+import React, { useState } from 'react';
+import { Target, TrendingUp, Award, Zap, FileText, BookOpen, Share2, Mail, Video } from 'lucide-react';
 
 const features = [
   {
@@ -24,7 +24,47 @@ const features = [
   }
 ];
 
+const channels = [
+  {
+    icon: FileText,
+    title: "Blog Posts",
+    description: "SEO-optimized content that drives traffic and gets you mentioned in LLMs like ChatGPT",
+    details: "We create SEO-focused content that gets your website more traffic and creates more ways for your prospects to find you. Our blog posts are optimized to be mentioned in large language models like ChatGPT, expanding your reach beyond traditional search.",
+    color: "from-acadia-coral to-acadia-navy"
+  },
+  {
+    icon: BookOpen,
+    title: "Whitepapers",
+    description: "Premium long-form content that creates MQLs and showcases your expertise",
+    details: "Premium long-form content, when gated, creates marketing qualified leads (MQLs) and engages your visitors. We help them learn about your thought process and how you work with clients, establishing you as a trusted authority in your space.",
+    color: "from-acadia-gold to-acadia-navy"
+  },
+  {
+    icon: Share2,
+    title: "Social Media",
+    description: "Build brand awareness and drive visitors through strategic LinkedIn posting",
+    details: "Get more visitors and build powerful brand awareness through strategic social media content. We focus on LinkedIn posting to reach B2B FinTech decision-makers where they're most active and engaged.",
+    color: "from-acadia-teal to-acadia-navy"
+  },
+  {
+    icon: Mail,
+    title: "Email",
+    description: "Engage prospects with relevant, value-add content and increase touchpoints",
+    details: "Email helps engage your prospects with relevant, value-add content that keeps your brand top-of-mind. We create more touchpoints to interact with clients and prospects, nurturing relationships throughout the sales cycle.",
+    color: "from-acadia-coral to-acadia-gold"
+  },
+  {
+    icon: Video,
+    title: "Video",
+    description: "Showcase your product, testimonials, and speaking engagements",
+    details: "Video content helps you showcase your product, present compelling testimonials, and make the most of your speaking engagements and podcast appearances. We turn your thought leadership into engaging visual content.",
+    color: "from-acadia-gold to-acadia-teal"
+  }
+];
+
 export default function Services() {
+  const [hoveredChannel, setHoveredChannel] = useState(null);
+
   return (
     <section id="services" className="py-24 bg-white">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
@@ -60,30 +100,58 @@ export default function Services() {
           ))}
         </div>
         
-        {/* Service Channels */}
-        <div className="mt-20 bg-gradient-to-br from-acadia-navy to-acadia-teal rounded-3xl p-12 text-white">
-          <h3 className="text-3xl font-bold text-center mb-12">Content Distribution Channels</h3>
-          <div className="grid grid-cols-2 md:grid-cols-5 gap-8 text-center">
-            <div>
-              <div className="text-4xl mb-2">📝</div>
-              <div className="font-semibold">Blog Posts</div>
-            </div>
-            <div>
-              <div className="text-4xl mb-2">📄</div>
-              <div className="font-semibold">Whitepapers</div>
-            </div>
-            <div>
-              <div className="text-4xl mb-2">📱</div>
-              <div className="font-semibold">Social Media</div>
-            </div>
-            <div>
-              <div className="text-4xl mb-2">📧</div>
-              <div className="font-semibold">Email</div>
-            </div>
-            <div>
-              <div className="text-4xl mb-2">🎥</div>
-              <div className="font-semibold">Video</div>
-            </div>
+        {/* Content Distribution Channels - Interactive */}
+        <div className="mt-20 relative">
+          <div className="text-center mb-12">
+            <h3 className="text-4xl font-bold text-acadia-navy mb-4">
+              Content Distribution <span className="gradient-text">Channels</span>
+            </h3>
+            <p className="text-lg text-gray-600">Hover over each channel to learn more</p>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-5 gap-6">
+            {channels.map((channel, index) => (
+              <div
+                key={index}
+                className="relative"
+                onMouseEnter={() => setHoveredChannel(index)}
+                onMouseLeave={() => setHoveredChannel(null)}
+              >
+                {/* Channel Card */}
+                <div className={`relative bg-gradient-to-br ${channel.color} rounded-2xl p-8 text-white cursor-pointer transition-all duration-300 transform ${
+                  hoveredChannel === index ? 'scale-105 shadow-2xl' : 'shadow-lg hover:shadow-xl'
+                }`}>
+                  <div className="flex flex-col items-center text-center space-y-4">
+                    <div className={`w-20 h-20 bg-white/20 backdrop-blur-sm rounded-2xl flex items-center justify-center transition-transform duration-300 ${
+                      hoveredChannel === index ? 'scale-110 rotate-6' : ''
+                    }`}>
+                      <channel.icon className="w-10 h-10 text-white" strokeWidth={2} />
+                    </div>
+                    <h4 className="font-bold text-xl">{channel.title}</h4>
+                    <p className="text-sm text-white/80 leading-relaxed">{channel.description}</p>
+                  </div>
+                </div>
+                
+                {/* Accordion Dropdown */}
+                <div className={`absolute left-0 right-0 top-full mt-2 z-10 transition-all duration-500 ease-out ${
+                  hoveredChannel === index 
+                    ? 'opacity-100 translate-y-0 pointer-events-auto' 
+                    : 'opacity-0 -translate-y-4 pointer-events-none'
+                }`}>
+                  <div className="bg-white rounded-xl shadow-2xl border-2 border-acadia-gold p-6">
+                    <div className="flex items-start gap-3">
+                      <div className={`flex-shrink-0 w-10 h-10 bg-gradient-to-br ${channel.color} rounded-lg flex items-center justify-center`}>
+                        <channel.icon className="w-6 h-6 text-white" strokeWidth={2} />
+                      </div>
+                      <div>
+                        <h5 className="font-bold text-acadia-navy mb-2">{channel.title}</h5>
+                        <p className="text-sm text-gray-700 leading-relaxed">{channel.details}</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </div>
