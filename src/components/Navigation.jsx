@@ -21,7 +21,9 @@ export default function Navigation() {
             <img 
               src="/img/Acadia-Logo.png" 
               alt="Acadia" 
-              className="h-12"
+              className={`h-12 transition-all duration-300 ${
+                isScrolled ? '' : 'brightness-0 invert'
+              }`}
             />
           </div>
           

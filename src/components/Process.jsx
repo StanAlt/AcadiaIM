@@ -74,14 +74,22 @@ export default function Process() {
                 }`}>
                   {/* Icon Circle */}
                   <div className="flex-shrink-0">
-                    <div className={`w-32 h-32 rounded-full bg-gradient-to-br from-${step.color} to-acadia-navy flex items-center justify-center shadow-2xl transform group-hover:scale-110 transition-transform duration-300`}>
-                      <step.icon className="w-16 h-16 text-white" strokeWidth={1.5} />
+                    <div className={`w-32 h-32 rounded-full flex items-center justify-center shadow-2xl transform group-hover:scale-110 transition-transform duration-300 ${
+                      step.color === 'acadia-coral' ? 'bg-gradient-to-br from-acadia-coral to-acadia-navy' :
+                      step.color === 'acadia-gold' ? 'bg-gradient-to-br from-acadia-gold to-acadia-navy' :
+                      'bg-gradient-to-br from-acadia-teal to-acadia-navy'
+                    }`}>
+                      <step.icon className="w-16 h-16 text-white" strokeWidth={2} />
                     </div>
                   </div>
                   
                   {/* Content */}
-                  <div className="flex-1 bg-white rounded-2xl p-8 shadow-lg group-hover:shadow-2xl transition-shadow duration-300">
-                    <div className={`text-6xl font-bold text-${step.color} opacity-20 mb-4`}>
+                  <div className="flex-1 bg-white rounded-2xl p-8 shadow-lg group-hover:shadow-2xl transition-all duration-300 group-hover:-translate-y-1">
+                    <div className={`text-6xl font-bold opacity-20 mb-4 ${
+                      step.color === 'acadia-coral' ? 'text-acadia-coral' :
+                      step.color === 'acadia-gold' ? 'text-acadia-gold' :
+                      'text-acadia-teal'
+                    }`}>
                       {step.number}
                     </div>
                     <h3 className="text-2xl font-bold text-acadia-navy mb-4">
