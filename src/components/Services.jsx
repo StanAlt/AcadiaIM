@@ -101,7 +101,7 @@ export default function Services() {
         </div>
         
         {/* Content Distribution Channels - Interactive */}
-        <div className="mt-20 relative">
+        <div className="mt-20">
           <div className="text-center mb-12">
             <h3 className="text-4xl font-bold text-acadia-navy mb-4">
               Content Distribution <span className="gradient-text">Channels</span>
@@ -109,11 +109,11 @@ export default function Services() {
             <p className="text-lg text-gray-600">Hover over each channel to learn more</p>
           </div>
           
-          <div className="grid grid-cols-1 md:grid-cols-5 gap-6">
+          {/* Cards Container */}
+          <div className="grid grid-cols-1 md:grid-cols-5 gap-6 mb-6">
             {channels.map((channel, index) => (
               <div
                 key={index}
-                className="relative"
                 onMouseEnter={() => setHoveredChannel(index)}
                 onMouseLeave={() => setHoveredChannel(null)}
               >
@@ -131,27 +131,36 @@ export default function Services() {
                     <p className="text-sm text-white/80 leading-relaxed">{channel.description}</p>
                   </div>
                 </div>
-                
-                {/* Accordion Dropdown */}
-                <div className={`absolute left-0 right-0 top-full mt-2 z-10 transition-all duration-500 ease-out ${
-                  hoveredChannel === index 
-                    ? 'opacity-100 translate-y-0 pointer-events-auto' 
-                    : 'opacity-0 -translate-y-4 pointer-events-none'
-                }`}>
-                  <div className="bg-white rounded-xl shadow-2xl border-2 border-acadia-gold p-6">
-                    <div className="flex items-start gap-3">
-                      <div className={`flex-shrink-0 w-10 h-10 bg-gradient-to-br ${channel.color} rounded-lg flex items-center justify-center`}>
-                        <channel.icon className="w-6 h-6 text-white" strokeWidth={2} />
-                      </div>
-                      <div>
-                        <h5 className="font-bold text-acadia-navy mb-2">{channel.title}</h5>
-                        <p className="text-sm text-gray-700 leading-relaxed">{channel.details}</p>
-                      </div>
-                    </div>
+              </div>
+            ))}
+          </div>
+          
+          {/* Full-Width Detail Panel */}
+          <div className={`transition-all duration-500 ease-out overflow-hidden ${
+            hoveredChannel !== null 
+              ? 'max-h-96 opacity-100' 
+              : 'max-h-0 opacity-0'
+          }`}>
+            {hoveredChannel !== null && (
+              <div className="bg-white rounded-2xl shadow-2xl border-2 border-acadia-gold p-8 md:p-12">
+                <div className="flex items-start gap-6 max-w-5xl mx-auto">
+                  <div className={`flex-shrink-0 w-16 h-16 bg-gradient-to-br ${channels[hoveredChannel].color} rounded-2xl flex items-center justify-center shadow-lg`}>
+                    {React.createElement(channels[hoveredChannel].icon, { 
+                      className: "w-8 h-8 text-white", 
+                      strokeWidth: 2 
+                    })}
+                  </div>
+                  <div className="flex-1">
+                    <h4 className="text-3xl font-bold text-acadia-navy mb-4">
+                      {channels[hoveredChannel].title}
+                    </h4>
+                    <p className="text-lg text-gray-700 leading-relaxed">
+                      {channels[hoveredChannel].details}
+                    </p>
                   </div>
                 </div>
               </div>
-            ))}
+            )}
           </div>
         </div>
       </div>
