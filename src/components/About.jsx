@@ -25,20 +25,20 @@ export default function About() {
             </h2>
             <div className="space-y-6 text-lg text-gray-700 leading-relaxed">
               <p>
-                Acadia is founded by <strong className="text-acadia-navy">Stan</strong>, bringing over 25 years of deep experience in investment management, data analysis, and FinTech innovation.
+                Acadia is founded by <strong className="text-acadia-navy">Stan</strong>, bringing over 25 years of hands-on experience in investment management, data analysis, and FinTech innovation.
               </p>
               <p>
-                This extensive background provides a unique advantage: we don't just understand content marketing—we understand the complex decision-making processes, long sales cycles, and sophisticated needs of B2B FinTech buyers.
+                This extensive background provides a unique advantage: we don't just understand content marketing—we understand the complex decision-making processes of your customers and what it takes to attract leads, engage prospects and convert clients over long sales cycles.
               </p>
               <p>
-                By combining this hard-earned expertise with cutting-edge AI technology, we create content strategies that truly resonate with your target audience and drive measurable business growth.
+                By combining this expertise with cutting-edge AI technology, we create content strategies that reach your target audience and truly resonate with them building your brand and driving measurable growth.
               </p>
             </div>
             
             <div className="mt-8 p-6 bg-white rounded-xl shadow-lg border-l-4 border-acadia-coral">
               <h3 className="text-xl font-bold text-acadia-navy mb-2">Our Mission</h3>
               <p className="text-gray-700">
-                To engineer sustainable growth for FinTech companies by combining AI-powered insights with human expertise and strategic content creation.
+                To engineer sustainable growth for FinTech companies through strategic content creation and distribution.
               </p>
             </div>
             

@@ -5,36 +5,36 @@ const steps = [
   {
     number: "01",
     icon: Brain,
-    title: "AI-Powered Deep Research",
-    description: "We harness advanced AI to conduct comprehensive SEO research, identifying optimal keyword targeting and competitive differentiation opportunities.",
+    title: "AI-Powered SEO Research",
+    description: "We tap advanced AI agents to conduct comprehensive SEO research, identifying optimal keyword targeting and competitive differentiators.",
     color: "acadia-coral"
   },
   {
     number: "02",
     icon: Users,
-    title: "Expert Human Review",
-    description: "Drawing on 25 years of investment management and FinTech experience, we validate and refine AI insights with deep industry expertise.",
+    title: "Expert Discovery",
+    description: "Drawing on 25 years of investment management and FinTech experience, we build a deep understanding of your business, your target audience and their workflows, and the gaps your product fills.",
     color: "acadia-gold"
   },
   {
     number: "03",
     icon: FileText,
     title: "Targeted Content Creation",
-    description: "We create content that resonates with your B2B FinTech audience, understanding complex sales cycles and decision-making processes.",
+    description: "We create content that resonates with your audience, understanding nuanced customer journeys, the critical touch-points, and the complexities of the decision-making processes.",
     color: "acadia-teal"
   },
   {
     number: "04",
     icon: Palette,
     title: "Human Design & Refinement",
-    description: "Our team ensures every piece is polished, professional, and perfectly aligned with your brand voice and strategic objectives.",
+    description: "Our team ensures every piece is beautiful and perfectly aligned with your brand voice and strategic objectives.",
     color: "acadia-coral"
   },
   {
     number: "05",
     icon: Share2,
     title: "Multi-Channel Distribution",
-    description: "Website blogs, whitepapers, social media, email campaigns, and video content—we maximize your reach across every relevant channel.",
+    description: "Website blogs, whitepapers, social media, email campaigns, and video content—we maximize your reach across every relevant channel to grow your brand at record speed.",
     color: "acadia-gold"
   }
 ];

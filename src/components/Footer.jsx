@@ -11,7 +11,7 @@ export default function Footer() {
             <img 
               src="/img/Acadia-Logo.png" 
               alt="Acadia" 
-              className="h-10 mb-4 brightness-0 invert"
+              className="h-10 mb-4"
             />
             <p className="text-gray-400 text-sm">
               Engineering growth through AI-powered content strategy for B2B FinTech.
