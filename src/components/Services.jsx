@@ -136,7 +136,7 @@ export default function Services() {
           </div>
           
           {/* Full-Width Detail Panel */}
-          <div className={`transition-all duration-500 ease-out overflow-hidden ${
+          <div className={`transition-all duration-500 ease-in-out overflow-hidden ${
             hoveredChannel !== null 
               ? 'max-h-96 opacity-100' 
               : 'max-h-0 opacity-0'

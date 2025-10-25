@@ -22,6 +22,7 @@ export default function Navigation() {
               src="/img/Acadia-Logo.png" 
               alt="Acadia" 
               className="h-12 transition-all duration-300"
+              style={{ mixBlendMode: 'multiply' }}
             />
           </div>
           
