@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Send, Linkedin } from 'lucide-react';
+import confetti from 'canvas-confetti';
 
 export default function Contact() {
   const [formData, setFormData] = useState({
@@ -10,10 +11,18 @@ export default function Contact() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    
+    // Trigger confetti animation
+    confetti({
+      particleCount: 100,
+      spread: 70,
+      origin: { y: 0.6 }
+    });
+    
     // Create mailto link with form data
     const subject = `Growth Inquiry from ${formData.company}`;
     const body = `Name: ${formData.name}%0D%0ACompany: ${formData.company}%0D%0AEmail: ${formData.email}%0D%0A%0D%0AMessage:%0D%0A`;
-    window.location.href = `mailto:info@acadia.im?subject=${subject}&body=${body}`;
+    window.location.href = `mailto:stanalt@gmail.com?subject=${subject}&body=${body}`;
   };
 
   const handleChange = (e) => {
@@ -107,7 +116,7 @@ export default function Contact() {
               </button>
               
               <a 
-                href="https://www.linkedin.com" 
+                href="https://www.linkedin.com/in/stanalt/" 
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center justify-center gap-3 px-8 py-4 bg-white/20 backdrop-blur-sm text-white font-semibold rounded-lg hover:bg-white/30 transition-all duration-200 border border-white/30"
