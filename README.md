@@ -2,6 +2,8 @@
 
 A beautiful, high-contrast website for Acadia's AI FinTech consulting services, inspired by Intercom's design.
 
+**Last Updated**: Nov 4, 2025 - Deployment test (changes now pushed to main branch)
+
 ## 🚀 Getting Started
 
 ### Prerequisites
