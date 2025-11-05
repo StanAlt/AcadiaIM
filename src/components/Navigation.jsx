@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import AcadiaLogo from './AcadiaLogo';
 
 export default function Navigation() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -17,14 +18,10 @@ export default function Navigation() {
     }`}>
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">
-          <div className="flex items-center">
-            <img 
-              src="/img/Acadia-Logo.png" 
-              alt="Acadia" 
-              className={`h-12 transition-all duration-300 ${
-                isScrolled ? '' : 'brightness-0 invert'
-              }`}
-            />
+          <div className={`flex items-center transition-colors duration-300 ${
+            isScrolled ? 'text-acadia-navy' : 'text-white'
+          }`}>
+            <AcadiaLogo className="h-12" />
           </div>
           
           <div className="hidden md:flex items-center space-x-8">

@@ -1,5 +1,6 @@
 import React from 'react';
 import { Linkedin, Mail } from 'lucide-react';
+import AcadiaLogo from './AcadiaLogo';
 
 export default function Footer() {
   return (
@@ -7,12 +8,8 @@ export default function Footer() {
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-8">
           {/* Logo and Tagline */}
-          <div>
-            <img 
-              src="/img/Acadia-Logo.png" 
-              alt="Acadia" 
-              className="h-10 mb-4 brightness-0 invert"
-            />
+          <div className="text-white">
+            <AcadiaLogo className="h-10 mb-4" />
             <p className="text-gray-400 text-sm">
               Engineering growth through AI-powered content strategy for B2B FinTech.
             </p>
