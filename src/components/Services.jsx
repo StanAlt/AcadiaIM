@@ -106,11 +106,11 @@ export default function Services() {
             <h3 className="text-4xl font-bold text-acadia-navy mb-4">
               Content Distribution <span className="gradient-text">Channels</span>
             </h3>
-            <p className="text-lg text-gray-600">Hover over each channel to learn more</p>
+            <p className="text-lg text-gray-600">Complex B2B Sales require control of multiple touchpoints</p>
           </div>
           
           {/* Cards Container */}
-          <div className="grid grid-cols-1 md:grid-cols-5 gap-6 mb-6">
+          <div className="grid grid-cols-1 md:grid-cols-5 gap-6 mb-8">
             {channels.map((channel, index) => (
               <div
                 key={index}
@@ -118,12 +118,12 @@ export default function Services() {
                 onMouseLeave={() => setHoveredChannel(null)}
               >
                 {/* Channel Card */}
-                <div className={`relative bg-gradient-to-br ${channel.color} rounded-2xl p-8 text-white cursor-pointer transition-all duration-300 transform ${
-                  hoveredChannel === index ? 'scale-105 shadow-2xl' : 'shadow-lg hover:shadow-xl'
+                <div className={`relative bg-gradient-to-br ${channel.color} rounded-2xl p-8 text-white cursor-pointer transition-all duration-300 ${
+                  hoveredChannel === index ? 'shadow-2xl -translate-y-1' : 'shadow-lg hover:shadow-xl'
                 }`}>
                   <div className="flex flex-col items-center text-center space-y-4">
-                    <div className={`w-20 h-20 bg-white/20 backdrop-blur-sm rounded-2xl flex items-center justify-center transition-transform duration-300 ${
-                      hoveredChannel === index ? 'scale-110 rotate-6' : ''
+                    <div className={`w-20 h-20 bg-white/20 backdrop-blur-sm rounded-2xl flex items-center justify-center transition-all duration-300 ${
+                      hoveredChannel === index ? 'scale-105 rotate-3' : ''
                     }`}>
                       <channel.icon className="w-10 h-10 text-white" strokeWidth={2} />
                     </div>
@@ -135,32 +135,34 @@ export default function Services() {
             ))}
           </div>
           
-          {/* Full-Width Detail Panel */}
-          <div className={`transition-all duration-500 ease-in-out overflow-hidden ${
-            hoveredChannel !== null 
-              ? 'max-h-96 opacity-100' 
-              : 'max-h-0 opacity-0'
-          }`}>
-            {hoveredChannel !== null && (
-              <div className="bg-white rounded-2xl shadow-2xl border-2 border-acadia-gold p-8 md:p-12">
-                <div className="flex items-start gap-6 max-w-5xl mx-auto">
-                  <div className={`flex-shrink-0 w-16 h-16 bg-gradient-to-br ${channels[hoveredChannel].color} rounded-2xl flex items-center justify-center shadow-lg`}>
-                    {React.createElement(channels[hoveredChannel].icon, { 
-                      className: "w-8 h-8 text-white", 
-                      strokeWidth: 2 
-                    })}
-                  </div>
-                  <div className="flex-1">
-                    <h4 className="text-3xl font-bold text-acadia-navy mb-4">
-                      {channels[hoveredChannel].title}
-                    </h4>
-                    <p className="text-lg text-gray-700 leading-relaxed">
-                      {channels[hoveredChannel].details}
-                    </p>
+          {/* Full-Width Detail Panel - Fixed Height Container */}
+          <div className="relative min-h-[280px] mb-8">
+            <div className={`absolute inset-0 transition-all duration-500 ease-in-out ${
+              hoveredChannel !== null 
+                ? 'opacity-100 translate-y-0' 
+                : 'opacity-0 -translate-y-4 pointer-events-none'
+            }`}>
+              {hoveredChannel !== null && (
+                <div className="bg-white rounded-2xl shadow-2xl border-2 border-acadia-gold p-8 md:p-12 h-full">
+                  <div className="flex items-start gap-6 max-w-5xl mx-auto">
+                    <div className={`flex-shrink-0 w-16 h-16 bg-gradient-to-br ${channels[hoveredChannel].color} rounded-2xl flex items-center justify-center shadow-lg`}>
+                      {React.createElement(channels[hoveredChannel].icon, { 
+                        className: "w-8 h-8 text-white", 
+                        strokeWidth: 2 
+                      })}
+                    </div>
+                    <div className="flex-1">
+                      <h4 className="text-3xl font-bold text-acadia-navy mb-4">
+                        {channels[hoveredChannel].title}
+                      </h4>
+                      <p className="text-lg text-gray-700 leading-relaxed">
+                        {channels[hoveredChannel].details}
+                      </p>
+                    </div>
                   </div>
                 </div>
-              </div>
-            )}
+              )}
+            </div>
           </div>
         </div>
       </div>
