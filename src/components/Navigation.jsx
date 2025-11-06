@@ -40,6 +40,11 @@ export default function Navigation() {
             }`}>
               About
             </a>
+            <a href="#faq" className={`font-medium transition-colors ${
+              isScrolled ? 'text-acadia-navy hover:text-acadia-coral' : 'text-white hover:text-acadia-gold'
+            }`}>
+              FAQ
+            </a>
             <a href="#contact" className={`px-6 py-3 rounded-lg font-semibold transition-all ${
               isScrolled 
                 ? 'bg-acadia-coral text-white hover:bg-opacity-90' 
