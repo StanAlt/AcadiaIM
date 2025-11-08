@@ -21,7 +21,7 @@ export default function Hero() {
         <div className="space-y-8 animate-fade-in">
           <h1 className="section-title text-white leading-tight animate-slide-up">
             Engineer Growth with
-            <span className="block gradient-text mt-2 animate-pulse-slow">AI-Powered Precision</span>
+            <span className="block gradient-text mt-2 animate-pulse-slow">Content That Resonates</span>
           </h1>
           
           <p className="text-xl md:text-2xl text-gray-200 max-w-3xl mx-auto leading-relaxed animate-slide-up animation-delay-200">
