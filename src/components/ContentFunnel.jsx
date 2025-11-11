@@ -164,9 +164,9 @@ export default function ContentFunnel() {
                   <div className="w-32 h-32 rounded-full bg-gradient-to-br from-acadia-coral to-acadia-gold flex items-center justify-center mb-8 animate-pulse-slow">
                     <TrendingUp className="w-16 h-16 text-white" strokeWidth={2} />
                   </div>
-                  <h3 className="text-3xl font-bold text-white mb-4">Explore Each Stage</h3>
+                  <h3 className="text-3xl font-bold text-white mb-4">Three Stages in Your Funnel</h3>
                   <p className="text-xl text-gray-300">
-                    Hover over a stage to see the tools and strategies we use to drive results
+                    Use SEO and thought leadership to get visitors. Nurture them with valuable content and drive them down the funnel.
                   </p>
                 </div>
               </div>
