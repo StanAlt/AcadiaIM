@@ -66,7 +66,7 @@ export default function Services() {
   const [hoveredChannel, setHoveredChannel] = useState(null);
 
   return (
-    <section id="services" className="py-24 bg-white">
+    <section id="services" className="section-frame py-24 bg-white">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         <div className="text-center mb-16">
           <h2 className="section-title text-acadia-navy mb-6">

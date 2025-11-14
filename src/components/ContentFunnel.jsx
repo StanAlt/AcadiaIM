@@ -55,7 +55,7 @@ export default function ContentFunnel() {
   const [hoveredStage, setHoveredStage] = useState(null);
 
   return (
-    <section className="relative py-24 bg-gradient-to-br from-acadia-navy via-slate-900 to-acadia-navy overflow-hidden">
+    <section className="section-frame relative py-24 bg-gradient-to-br from-acadia-navy via-slate-900 to-acadia-navy overflow-hidden">
       {/* Animated Background Elements */}
       <div className="absolute inset-0 opacity-10">
         <div className="absolute top-20 left-10 w-72 h-72 bg-acadia-coral rounded-full mix-blend-multiply filter blur-3xl animate-blob"></div>

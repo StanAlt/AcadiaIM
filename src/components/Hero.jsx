@@ -3,7 +3,7 @@ import { ArrowRight } from 'lucide-react';
 
 export default function Hero() {
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-acadia-navy via-acadia-teal to-acadia-navy">
+    <section className="section-frame relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-acadia-navy via-acadia-teal to-acadia-navy">
       {/* Background Image with Overlay */}
       <div className="absolute inset-0 opacity-30">
         <img 

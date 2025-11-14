@@ -28,6 +28,31 @@
   .gradient-text {
     @apply bg-gradient-to-r from-acadia-coral to-acadia-gold bg-clip-text text-transparent;
   }
+
+  .section-frame {
+    @apply relative;
+  }
+
+  .section-frame::before,
+  .section-frame::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 48px;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .section-frame::before {
+    top: -24px;
+    background: linear-gradient(to bottom, rgba(10, 37, 64, 0.55), transparent);
+  }
+
+  .section-frame::after {
+    bottom: -24px;
+    background: linear-gradient(to top, rgba(10, 37, 64, 0.4), transparent);
+  }
 }
 
 @layer utilities {

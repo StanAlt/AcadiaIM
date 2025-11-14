@@ -42,7 +42,7 @@ export default function FAQ() {
   };
 
   return (
-    <section id="faq" className="py-24 bg-gradient-to-br from-gray-50 to-white">
+    <section id="faq" className="section-frame py-24 bg-gradient-to-br from-gray-50 to-white">
       {/* SEO Schema */}
       <script type="application/ld+json">
         {JSON.stringify(faqSchema)}

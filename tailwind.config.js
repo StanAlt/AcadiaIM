@@ -13,7 +13,7 @@ export default {
         'acadia-gold': '#f5a142',
       },
       fontFamily: {
-        sans: ['Inter', 'system-ui', '-apple-system', 'sans-serif'],
+        sans: ['"Space Grotesk"', 'system-ui', '-apple-system', 'sans-serif'],
       },
     },
   },

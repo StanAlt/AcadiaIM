@@ -77,7 +77,7 @@ export default function Process() {
     : 0;
 
   return (
-    <section id="process" className="py-24 bg-gray-50 overflow-hidden">
+    <section id="process" className="section-frame py-24 bg-gray-50 overflow-hidden">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         <div className="text-center mb-16">
           <h2 className="section-title text-acadia-navy mb-6">

@@ -22,7 +22,7 @@ export default function Contact() {
     // Create mailto link with form data
     const subject = `Growth Inquiry from ${formData.company}`;
     const body = `Name: ${formData.name}%0D%0ACompany: ${formData.company}%0D%0AEmail: ${formData.email}%0D%0A%0D%0AMessage:%0D%0A`;
-    window.location.href = `mailto:stanalt@gmail.com?subject=${subject}&body=${body}`;
+    window.location.href = `mailto:stan@acadia.im?subject=${subject}&body=${body}`;
   };
 
   const handleChange = (e) => {
@@ -33,7 +33,7 @@ export default function Contact() {
   };
 
   return (
-    <section id="contact" className="py-24 bg-gradient-to-br from-acadia-navy via-acadia-teal to-acadia-navy text-white relative overflow-hidden">
+    <section id="contact" className="section-frame py-24 bg-gradient-to-br from-acadia-navy via-acadia-teal to-acadia-navy text-white relative overflow-hidden">
       {/* Background Pattern */}
       <div className="absolute inset-0 opacity-10">
         <img 
