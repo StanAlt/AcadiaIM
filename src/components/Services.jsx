@@ -66,7 +66,7 @@ export default function Services() {
   const [hoveredChannel, setHoveredChannel] = useState(null);
 
   return (
-    <section id="services" className="section-frame py-24 bg-white">
+    <section id="services" className="section-frame py-24 bg-white bg-geometric-pattern">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         <div className="text-center mb-16">
           <h2 className="section-title text-acadia-navy mb-6">
@@ -81,7 +81,7 @@ export default function Services() {
           {features.map((feature, index) => (
             <div 
               key={index}
-              className="group relative bg-gradient-to-br from-gray-50 to-white p-8 rounded-2xl border-2 border-gray-200 hover:border-acadia-coral transition-all duration-300 hover:shadow-xl"
+              className="group relative bg-gradient-to-br from-gray-50 to-white p-8 rounded-2xl border-2 border-gray-200 hover:border-acadia-coral transition-all duration-500 hover:shadow-2xl hover:-translate-y-2"
             >
               <div className="flex items-start gap-6">
                 <div className="flex-shrink-0 w-16 h-16 bg-gradient-to-br from-acadia-coral to-acadia-gold rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300">

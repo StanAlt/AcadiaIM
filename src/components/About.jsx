@@ -3,7 +3,7 @@ import { Linkedin, Mail } from 'lucide-react';
 
 export default function About() {
   return (
-    <section id="about" className="section-frame py-24 bg-gray-50">
+    <section id="about" className="section-frame py-24 bg-gray-50 bg-geometric-pattern">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           {/* Image Side */}
@@ -35,7 +35,7 @@ export default function About() {
               </p>
             </div>
             
-            <div className="mt-8 p-6 bg-white rounded-xl shadow-lg border-l-4 border-acadia-coral">
+            <div className="mt-8 p-6 bg-white rounded-xl shadow-xl border-l-8 border-acadia-coral hover:shadow-2xl transition-all duration-500 hover:-translate-y-1">
               <h3 className="text-xl font-bold text-acadia-navy mb-2">Our Mission</h3>
               <p className="text-gray-700">
                 To engineer sustainable growth for FinTech companies through strategic content creation and distribution.

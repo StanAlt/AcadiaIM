@@ -18,7 +18,7 @@ export default function Hero() {
       
       {/* Content */}
       <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 py-24 text-center">
-        <div className="space-y-8 animate-fade-in">
+        <div className="space-y-8">
           <h1 className="section-title text-white leading-tight animate-slide-up">
             Engineer Growth with
             <span className="block gradient-text mt-2 animate-pulse-slow">Content That Resonates</span>
@@ -39,15 +39,15 @@ export default function Hero() {
           </div>
           
           <div className="pt-12 grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
-            <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6 border border-white/20 hover:bg-white/20 hover:border-acadia-coral transition-all duration-300 hover:scale-105 animate-slide-up animation-delay-600">
+            <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6 border border-white/20 hover:bg-white/20 hover:border-acadia-coral transition-all duration-500 hover:scale-105 animate-scale-in animation-delay-600">
               <div className="text-4xl font-bold text-acadia-coral mb-2">25+</div>
               <div className="text-white font-medium">Years Experience</div>
             </div>
-            <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6 border border-white/20 hover:bg-white/20 hover:border-acadia-gold transition-all duration-300 hover:scale-105 animate-slide-up animation-delay-700">
+            <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6 border border-white/20 hover:bg-white/20 hover:border-acadia-gold transition-all duration-500 hover:scale-105 animate-scale-in animation-delay-800">
               <div className="text-4xl font-bold text-acadia-gold mb-2">5-Step</div>
               <div className="text-white font-medium">Growth Process</div>
             </div>
-            <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6 border border-white/20 hover:bg-white/20 hover:border-acadia-coral transition-all duration-300 hover:scale-105 animate-slide-up animation-delay-800">
+            <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6 border border-white/20 hover:bg-white/20 hover:border-acadia-coral transition-all duration-500 hover:scale-105 animate-scale-in animation-delay-1000">
               <div className="text-4xl font-bold text-acadia-coral mb-2">Multi-Channel</div>
               <div className="text-white font-medium">Distribution</div>
             </div>

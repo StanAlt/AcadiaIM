@@ -42,7 +42,7 @@ export default function FAQ() {
   };
 
   return (
-    <section id="faq" className="section-frame py-24 bg-gradient-to-br from-gray-50 to-white">
+    <section id="faq" className="section-frame py-24 bg-gradient-to-br from-gray-50 to-white bg-geometric-pattern">
       {/* SEO Schema */}
       <script type="application/ld+json">
         {JSON.stringify(faqSchema)}
@@ -62,7 +62,7 @@ export default function FAQ() {
           {faqs.map((faq, index) => (
             <div
               key={index}
-              className="bg-white rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden border-2 border-gray-100 hover:border-acadia-coral"
+              className="bg-white rounded-2xl shadow-md hover:shadow-2xl transition-all duration-500 overflow-hidden border-2 border-gray-100 hover:border-acadia-coral hover:-translate-y-1"
             >
               <button
                 onClick={() => toggleFAQ(index)}

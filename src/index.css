@@ -14,15 +14,15 @@
 
 @layer components {
   .btn-primary {
-    @apply px-8 py-4 bg-acadia-coral text-white font-semibold rounded-lg hover:bg-opacity-90 transition-all duration-200 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5;
+    @apply px-8 py-4 bg-acadia-coral text-white font-bold rounded-lg hover:bg-opacity-90 transition-all duration-300 shadow-xl hover:shadow-2xl transform hover:-translate-y-1 hover:scale-105;
   }
   
   .btn-secondary {
-    @apply px-8 py-4 bg-white text-acadia-navy font-semibold rounded-lg border-2 border-acadia-navy hover:bg-acadia-navy hover:text-white transition-all duration-200;
+    @apply px-8 py-4 bg-white text-acadia-navy font-bold rounded-lg border-3 border-acadia-navy hover:bg-acadia-navy hover:text-white transition-all duration-300 shadow-lg hover:shadow-xl hover:-translate-y-1;
   }
   
   .section-title {
-    @apply text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight;
+    @apply text-4xl md:text-5xl lg:text-6xl font-display font-bold tracking-tight;
   }
   
   .gradient-text {
@@ -144,5 +144,45 @@
   
   .animation-delay-4000 {
     animation-delay: 4s;
+  }
+  
+  .animation-delay-1000 {
+    animation-delay: 1s;
+  }
+  
+  .animation-delay-1200 {
+    animation-delay: 1.2s;
+  }
+  
+  .animation-delay-1400 {
+    animation-delay: 1.4s;
+  }
+  
+  @keyframes scale-in {
+    from {
+      opacity: 0;
+      transform: scale(0.9);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+  
+  .animate-scale-in {
+    animation: scale-in 0.6s ease-out;
+  }
+  
+  /* Geometric background patterns */
+  .bg-geometric-pattern {
+    background-image: 
+      linear-gradient(30deg, rgba(30, 95, 111, 0.03) 12%, transparent 12.5%, transparent 87%, rgba(30, 95, 111, 0.03) 87.5%, rgba(30, 95, 111, 0.03)),
+      linear-gradient(150deg, rgba(30, 95, 111, 0.03) 12%, transparent 12.5%, transparent 87%, rgba(30, 95, 111, 0.03) 87.5%, rgba(30, 95, 111, 0.03)),
+      linear-gradient(30deg, rgba(30, 95, 111, 0.03) 12%, transparent 12.5%, transparent 87%, rgba(30, 95, 111, 0.03) 87.5%, rgba(30, 95, 111, 0.03)),
+      linear-gradient(150deg, rgba(30, 95, 111, 0.03) 12%, transparent 12.5%, transparent 87%, rgba(30, 95, 111, 0.03) 87.5%, rgba(30, 95, 111, 0.03)),
+      linear-gradient(60deg, rgba(232, 104, 66, 0.05) 25%, transparent 25.5%, transparent 75%, rgba(232, 104, 66, 0.05) 75%, rgba(232, 104, 66, 0.05)),
+      linear-gradient(60deg, rgba(232, 104, 66, 0.05) 25%, transparent 25.5%, transparent 75%, rgba(232, 104, 66, 0.05) 75%, rgba(232, 104, 66, 0.05));
+    background-size: 80px 140px;
+    background-position: 0 0, 0 0, 40px 70px, 40px 70px, 0 0, 40px 70px;
   }
 }
