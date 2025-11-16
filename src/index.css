@@ -18,7 +18,7 @@
   }
   
   .btn-secondary {
-    @apply px-8 py-4 bg-white text-acadia-navy font-bold rounded-lg border-3 border-acadia-navy hover:bg-acadia-navy hover:text-white transition-all duration-300 shadow-lg hover:shadow-xl hover:-translate-y-1;
+    @apply px-8 py-4 bg-white text-acadia-navy font-bold rounded-lg border-2 border-acadia-navy hover:bg-acadia-navy hover:text-white transition-all duration-300 shadow-lg hover:shadow-xl hover:-translate-y-1;
   }
   
   .section-title {
