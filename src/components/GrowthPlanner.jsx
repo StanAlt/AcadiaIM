@@ -4,15 +4,15 @@ import { TrendingUp, Users, Zap, Target, FileText, BarChart3 } from 'lucide-reac
 
 export default function GrowthPlanner() {
   // Agency Profile State
-  const [currentRevenue, setCurrentRevenue] = useState(1000000);
-  const [acv, setAcv] = useState(25000);
-  const [retention, setRetention] = useState(85);
+  const [currentRevenue, setCurrentRevenue] = useState(1200000);
+  const [acv, setAcv] = useState(30000);
+  const [retention, setRetention] = useState(95);
   const [targetGrowth, setTargetGrowth] = useState(50);
   
   // Growth Levers State
-  const [newLeadsMonthly, setNewLeadsMonthly] = useState(25);
-  const [conversionRate, setConversionRate] = useState(2.5);
-  const [salesCycle, setSalesCycle] = useState(3);
+  const [newLeadsMonthly, setNewLeadsMonthly] = useState(100);
+  const [conversionRate, setConversionRate] = useState(5);
+  const [salesCycle, setSalesCycle] = useState(6);
   
   // Reverse Funnel State
   const [trafficToLeadRate, setTrafficToLeadRate] = useState(1.5);
@@ -76,7 +76,8 @@ export default function GrowthPlanner() {
     };
   }, [targetRevenue, currentRevenue, acv, conversionRate, trafficToLeadRate, avgViewsPerPost]);
   
-  const gap = targetRevenue - projectionData.accumulated;
+  const gap = targetRevenue - projectionData.runRate;
+  const goalAchieved = projectionData.runRate >= targetRevenue;
 
   return (
     <section id="growth-plan" className="relative py-24 bg-gradient-to-br from-gray-50 via-white to-gray-50">
@@ -294,15 +295,15 @@ export default function GrowthPlanner() {
                       <Line 
                         type="monotone" 
                         dataKey="projected" 
-                        stroke="#e86842" 
+                        stroke={goalAchieved ? "#1e5f6f" : "#e86842"}
                         strokeWidth={3}
-                        dot={{ fill: '#e86842', r: 4 }}
+                        dot={{ fill: goalAchieved ? "#1e5f6f" : "#e86842", r: 4 }}
                         name="Projected Revenue"
                       />
                       <Line 
                         type="monotone" 
                         dataKey="target" 
-                        stroke="#1e5f6f" 
+                        stroke={goalAchieved ? "#10b981" : "#1e5f6f"}
                         strokeWidth={2}
                         strokeDasharray="5 5"
                         dot={false}
@@ -314,18 +315,18 @@ export default function GrowthPlanner() {
 
                 {/* Metrics Cards */}
                 <div className="grid md:grid-cols-3 gap-4">
-                  <div className="bg-gradient-to-br from-acadia-coral to-acadia-gold rounded-xl p-6 text-white shadow-lg">
+                  <div className="bg-gradient-to-br from-acadia-coral to-orange-500 rounded-xl p-6 text-white shadow-lg">
                     <div className="text-sm opacity-90 mb-1">Projected 12M Revenue</div>
-                    <div className="text-3xl font-bold">${projectionData.accumulated.toLocaleString()}</div>
+                    <div className="text-3xl font-bold">${Math.round(projectionData.accumulated).toLocaleString()}</div>
                     <div className="text-sm mt-2">
                       {projectionData.accumulated > currentRevenue ? '+' : ''}
-                      ${(projectionData.accumulated - currentRevenue).toLocaleString()} vs Current
+                      ${Math.round(projectionData.accumulated - currentRevenue).toLocaleString()} vs Current
                     </div>
                   </div>
                   
                   <div className="bg-gradient-to-br from-acadia-teal to-acadia-navy rounded-xl p-6 text-white shadow-lg">
                     <div className="text-sm opacity-90 mb-1">Projected Run Rate</div>
-                    <div className="text-3xl font-bold">${projectionData.runRate.toLocaleString()}</div>
+                    <div className="text-3xl font-bold">${Math.round(projectionData.runRate).toLocaleString()}</div>
                     <div className="text-sm mt-2">End of Year Annual</div>
                   </div>
                   
@@ -335,7 +336,7 @@ export default function GrowthPlanner() {
                       : 'bg-gradient-to-br from-green-500 to-emerald-600'
                   }`}>
                     <div className="text-sm opacity-90 mb-1">Gap to Goal</div>
-                    <div className="text-3xl font-bold">${Math.abs(gap).toLocaleString()}</div>
+                    <div className="text-3xl font-bold">${Math.round(Math.abs(gap)).toLocaleString()}</div>
                     <div className="text-sm mt-2">{gap > 0 ? 'Below Target' : 'Above Target'}</div>
                   </div>
                 </div>
