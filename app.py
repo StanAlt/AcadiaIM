@@ -254,7 +254,7 @@ with col1:
     st.markdown("#### 📊 Your Current State")
     current_revenue = st.number_input(
         "Annual Revenue", 
-        value=1_000_000, 
+        value=1_200_000, 
         step=50000,
         format="%d",
         help="Your current annual recurring revenue"
@@ -263,7 +263,7 @@ with col1:
     
     acv = st.number_input(
         "Average Deal Size", 
-        value=25000, 
+        value=30000, 
         step=1000,
         format="%d",
         help="Average contract value per client"
@@ -274,15 +274,15 @@ with col2:
     st.markdown("#### 🎯 Your Goal")
     target_revenue = st.number_input(
         "Revenue Target", 
-        value=1_500_000, 
+        value=1_800_000, 
         step=50000,
         format="%d",
         help="Where you want to be in 12 months"
     )
     st.caption(f"${target_revenue:,}")
     
-    target_growth = round(((target_revenue - current_revenue) / current_revenue) * 100, 1)
-    st.metric("Growth Required", f"{target_growth}%")
+    target_growth = round(((target_revenue - current_revenue) / current_revenue) * 100, 0)
+    st.metric("Growth Required", f"{int(target_growth)}%")
 
 # Gap Analysis
 revenue_gap = target_revenue - current_revenue
@@ -291,7 +291,7 @@ new_clients_needed = revenue_gap / acv if acv > 0 else 0
 # Show the key number prominently - compact
 st.markdown(f"""
 <div class='hero-metric'>
-    <div class='hero-number'>{new_clients_needed:.0f}</div>
+    <div class='hero-number'>{int(new_clients_needed)}</div>
     <div class='hero-label'>new clients needed to hit your goal</div>
 </div>
 """, unsafe_allow_html=True)
@@ -305,27 +305,27 @@ with st.expander("⚙️ Adjust Your Strategy", expanded=True):
     with col_a:
         new_leads_monthly = st.slider(
             "Monthly Leads", 
-            5, 200, 25,
+            5, 200, 100,
             help="How many leads can you generate per month?"
         )
     
     with col_b:
         conversion_rate = st.slider(
             "Close Rate (%)", 
-            0.5, 10.0, 2.5, 
-            step=0.1,
+            1, 10, 5, 
+            step=1,
             help="What % of leads become clients?"
         )
     
     with col_c:
         sales_cycle = st.slider(
             "Sales Cycle (months)", 
-            1, 12, 3,
+            1, 12, 6,
             help="How long from lead to closed deal?"
         )
 
-# Quick retention assumption (hidden to reduce complexity)
-retention = 85
+# Retention assumption (from image: 95%)
+retention = 95
 
 # --- CALCULATIONS ---
 
@@ -414,11 +414,11 @@ st.plotly_chart(fig, use_container_width=True)
 metric_col1, metric_col2, metric_col3 = st.columns(3)
 
 with metric_col1:
-    delta_val = accumulated_revenue - current_revenue
+    delta_val = int(accumulated_revenue - current_revenue)
     metric_col1.metric(
         "Projected Revenue", 
-        f"${accumulated_revenue:,.0f}",
-        delta=f"${delta_val:,.0f} vs today"
+        f"${int(accumulated_revenue):,}",
+        delta=f"${delta_val:,} vs today"
     )
 
 with metric_col2:
@@ -426,15 +426,15 @@ with metric_col2:
     gap_percent = (gap_to_goal / target_revenue * 100) if target_revenue > 0 else 0
     metric_col2.metric(
         "Gap to Goal", 
-        f"${abs(gap_to_goal):,.0f}",
-        delta=f"{-gap_percent:.1f}%" if gap_to_goal > 0 else f"+{abs(gap_percent):.1f}%",
+        f"${int(abs(gap_to_goal)):,}",
+        delta=f"{int(-gap_percent)}%" if gap_to_goal > 0 else f"+{int(abs(gap_percent))}%",
         delta_color="inverse"
     )
 
 with metric_col3:
     metric_col3.metric(
         "Monthly Run Rate (M12)", 
-        f"${projected_revenue[-1]:,.0f}"
+        f"${int(projected_revenue[-1]):,}"
     )
 
 # --- COMPACT ACTION PLAN ---
@@ -450,19 +450,19 @@ needed_traffic = needed_leads_monthly / traffic_to_lead_rate if traffic_to_lead_
 
 if gap_to_goal > 0:
     st.info(f"""
-**To hit ${target_revenue:,.0f} target:**
+**To hit ${int(target_revenue):,} target:**
 
-• Need **{needed_leads_monthly:.0f} leads per month** (at {conversion_rate}% close rate)  
-• Requires ~**{needed_traffic:,.0f} monthly website visitors** (1.5% lead conversion)  
-• Your current plan projects **${accumulated_revenue:,.0f}** → Adjust sliders above to close the gap
+• Need **{int(needed_leads_monthly)} leads per month** (at {int(conversion_rate)}% close rate)  
+• Requires ~**{int(needed_traffic):,} monthly website visitors** (1.5% lead conversion)  
+• Your current plan projects **${int(accumulated_revenue):,}** → Adjust sliders above to close the gap
     """)
 else:
     st.success(f"""
 ✓ **You're on track!**
 
-Projected **${accumulated_revenue:,.0f}** exceeds your goal by **${abs(gap_to_goal):,.0f}**
+Projected **${int(accumulated_revenue):,}** exceeds your goal by **${int(abs(gap_to_goal)):,}**
 
-With {new_leads_monthly} leads per month at {conversion_rate}% close rate
+With {int(new_leads_monthly)} leads per month at {int(conversion_rate)}% close rate
     """)
 
 # --- COMPACT CTA ---
