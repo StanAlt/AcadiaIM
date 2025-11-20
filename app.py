@@ -157,20 +157,26 @@ st.markdown("""
         color: #0a2540 !important;
     }
     
-    /* Expander - compact */
+    /* Expander - light and readable */
     .streamlit-expanderHeader {
-        background-color: #f8f9fa !important;
+        background-color: #ffffff !important;
         border-radius: 6px !important;
-        border-left: 3px solid #1e5f6f !important;
+        border: 2px solid #e86842 !important;
         color: #0a2540 !important;
         font-weight: 600 !important;
         padding: 0.6rem 1rem !important;
-        font-size: 0.95rem !important;
+        font-size: 1rem !important;
+    }
+    
+    .streamlit-expanderHeader:hover {
+        background-color: #fff9f5 !important;
     }
     
     .streamlit-expanderContent {
         padding: 1rem !important;
         background-color: #fafbfc !important;
+        border: 1px solid #e5e7eb !important;
+        border-top: none !important;
     }
     
     /* Chart - compact */
@@ -202,11 +208,21 @@ st.markdown("""
         box-shadow: 0 5px 10px rgba(232, 104, 66, 0.4);
     }
     
-    /* Footer */
+    /* Caption - format helpers */
     .caption {
+        color: #1e5f6f !important;
+        font-size: 0.85rem !important;
+        font-weight: 600 !important;
+        margin-top: -0.3rem !important;
+        margin-bottom: 0.5rem !important;
+    }
+    
+    /* Footer caption */
+    .caption:last-child {
         color: #999 !important;
         font-size: 0.8rem !important;
         text-align: center;
+        font-weight: 400 !important;
         margin-top: 1rem !important;
     }
     
@@ -217,7 +233,15 @@ st.markdown("""
     </style>
 """, unsafe_allow_html=True)
 
-# --- HEADER ---
+# --- HEADER WITH LOGO ---
+st.markdown("""
+<div style='margin-bottom: 1.5rem;'>
+    <a href='https://www.acadia.im' style='text-decoration: none;'>
+        <img src='https://www.acadia.im/img/acadia-logo.png' alt='Acadia' style='height: 40px; margin-bottom: 0.5rem;' />
+    </a>
+</div>
+""", unsafe_allow_html=True)
+
 st.title("Growth Planner")
 st.markdown("**Simple calculator:** See what it takes to hit your revenue goals.")
 
@@ -229,26 +253,34 @@ col1, col2 = st.columns(2)
 with col1:
     st.markdown("#### 📊 Your Current State")
     current_revenue = st.number_input(
-        "Annual Revenue ($)", 
+        "Annual Revenue", 
         value=1_000_000, 
         step=50000,
+        format="%d",
         help="Your current annual recurring revenue"
     )
+    st.caption(f"${current_revenue:,}")
+    
     acv = st.number_input(
-        "Average Deal Size ($)", 
+        "Average Deal Size", 
         value=25000, 
         step=1000,
+        format="%d",
         help="Average contract value per client"
     )
+    st.caption(f"${acv:,}")
 
 with col2:
     st.markdown("#### 🎯 Your Goal")
     target_revenue = st.number_input(
-        "Revenue Target ($)", 
+        "Revenue Target", 
         value=1_500_000, 
         step=50000,
+        format="%d",
         help="Where you want to be in 12 months"
     )
+    st.caption(f"${target_revenue:,}")
+    
     target_growth = round(((target_revenue - current_revenue) / current_revenue) * 100, 1)
     st.metric("Growth Required", f"{target_growth}%")
 
@@ -418,12 +450,19 @@ needed_traffic = needed_leads_monthly / traffic_to_lead_rate if traffic_to_lead_
 
 if gap_to_goal > 0:
     st.info(f"""
-**To hit ${target_revenue:,.0f}:** Need **{needed_leads_monthly:.0f} leads/month** (at {conversion_rate}% close rate) = ~**{needed_traffic:,.0f} monthly visitors** (1.5% conversion).  
-Current plan: **${accumulated_revenue:,.0f}** → Adjust sliders to close gap.
+**To hit ${target_revenue:,.0f} target:**
+
+• Need **{needed_leads_monthly:.0f} leads per month** (at {conversion_rate}% close rate)  
+• Requires ~**{needed_traffic:,.0f} monthly website visitors** (1.5% lead conversion)  
+• Your current plan projects **${accumulated_revenue:,.0f}** → Adjust sliders above to close the gap
     """)
 else:
     st.success(f"""
-✓ **On track!** Projected **${accumulated_revenue:,.0f}** exceeds goal by **${abs(gap_to_goal):,.0f}** with {new_leads_monthly} leads/month at {conversion_rate}% close rate.
+✓ **You're on track!**
+
+Projected **${accumulated_revenue:,.0f}** exceeds your goal by **${abs(gap_to_goal):,.0f}**
+
+With {new_leads_monthly} leads per month at {conversion_rate}% close rate
     """)
 
 # --- COMPACT CTA ---
