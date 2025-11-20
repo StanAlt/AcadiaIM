@@ -8,197 +8,203 @@ from datetime import datetime, timedelta
 st.set_page_config(
     page_title="Acadia Growth Planner",
     page_icon="📈",
-    layout="wide",
-    initial_sidebar_state="expanded"
+    layout="centered",
+    initial_sidebar_state="collapsed"
 )
 
-# Custom CSS to match Acadia.im's exact brand aesthetic
+# Custom CSS - Compact, readable, Acadia colors
 st.markdown("""
     <style>
     @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=Crimson+Pro:wght@600;700&display=swap');
     
-    /* Main Background and Text */
+    /* Compact spacing */
+    .block-container {
+        padding-top: 2rem !important;
+        padding-bottom: 1rem !important;
+        max-width: 1200px !important;
+    }
+    
+    /* Clean white background */
     .main {
-        background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 50%, #f8f9fa 100%);
+        background-color: #ffffff;
         font-family: 'IBM Plex Sans', system-ui, -apple-system, sans-serif;
     }
     
-    /* Headings with Acadia Brand Font */
-    h1, h2, h3 {
-        font-family: 'Crimson Pro', Georgia, serif;
-        color: #0a2540;
-        font-weight: 700;
-    }
-    
-    h1 {
-        background: linear-gradient(135deg, #e86842 0%, #f5a142 100%);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
-        font-size: 3rem !important;
-    }
-    
     .stApp {
-        color: #333333;
+        background-color: #ffffff;
     }
     
-    /* Sidebar Styling - Acadia Navy */
-    [data-testid="stSidebar"] {
-        background: linear-gradient(180deg, #0a2540 0%, #1e5f6f 100%);
-        border-right: 3px solid #e86842;
-    }
-    
-    [data-testid="stSidebar"] * {
-        color: #ffffff !important;
-    }
-    
-    [data-testid="stSidebar"] h1,
-    [data-testid="stSidebar"] h2,
-    [data-testid="stSidebar"] h3 {
-        color: #f5a142 !important;
-        -webkit-text-fill-color: #f5a142 !important;
-    }
-    
-    [data-testid="stSidebar"] label {
-        color: #ffffff !important;
-        font-weight: 500;
-    }
-    
-    /* Sidebar Inputs */
-    [data-testid="stSidebar"] input {
-        background-color: rgba(255, 255, 255, 0.1) !important;
-        color: #ffffff !important;
-        border: 1px solid rgba(255, 255, 255, 0.3) !important;
-        border-radius: 8px !important;
-    }
-    
-    [data-testid="stSidebar"] .stSlider > div > div > div {
-        background-color: #e86842 !important;
-    }
-    
-    /* Metric Cards */
-    .metric-container {
-        background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
-        padding: 24px;
-        border-radius: 12px;
-        box-shadow: 0 4px 6px rgba(10, 37, 64, 0.1);
-        border: 1px solid #e5e7eb;
-        text-align: center;
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-    
-    .metric-container:hover {
-        transform: translateY(-4px);
-        box-shadow: 0 8px 12px rgba(232, 104, 66, 0.2);
-    }
-    
-    .metric-value {
-        font-size: 32px;
+    /* Compact headings */
+    h1 {
+        font-family: 'Crimson Pro', Georgia, serif;
+        color: #0a2540 !important;
+        font-size: 2.2rem !important;
+        margin-bottom: 0.5rem !important;
         font-weight: 700;
-        background: linear-gradient(135deg, #e86842 0%, #f5a142 100%);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
     }
     
-    .metric-label {
-        font-size: 12px;
-        color: #1e5f6f;
-        text-transform: uppercase;
-        letter-spacing: 1.5px;
-        font-weight: 600;
-        margin-top: 8px;
-    }
-    
-    /* Tabs - Acadia Colors */
-    .stTabs [data-baseweb="tab-list"] {
-        gap: 8px;
-        background-color: transparent;
-    }
-    
-    .stTabs [data-baseweb="tab"] {
-        background-color: #f8f9fa;
-        color: #0a2540;
-        border-radius: 8px 8px 0 0;
-        padding: 12px 24px;
-        font-weight: 600;
-        border: 2px solid transparent;
-    }
-    
-    .stTabs [aria-selected="true"] {
-        background: linear-gradient(135deg, #e86842 0%, #f5a142 100%);
-        color: white !important;
-        border-color: #e86842;
-    }
-    
-    /* Buttons */
-    .stButton > button {
-        background: linear-gradient(135deg, #e86842 0%, #f5a142 100%);
-        color: white;
-        border: none;
-        border-radius: 8px;
-        padding: 12px 32px;
-        font-weight: 600;
+    h2, h3 {
         font-family: 'IBM Plex Sans', sans-serif;
-        transition: all 0.3s ease;
-        box-shadow: 0 4px 6px rgba(232, 104, 66, 0.3);
-    }
-    
-    .stButton > button:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 6px 12px rgba(232, 104, 66, 0.4);
-    }
-    
-    /* Info/Warning Boxes */
-    .stAlert {
-        border-radius: 12px;
-        border-left: 4px solid #e86842;
-        background-color: #fff9f5;
-    }
-    
-    /* Expander - Acadia Style */
-    .streamlit-expanderHeader {
-        background-color: #f8f9fa;
-        border-radius: 8px;
-        border-left: 4px solid #1e5f6f;
-        color: #0a2540;
+        color: #0a2540 !important;
+        font-size: 1.1rem !important;
+        margin-top: 0.5rem !important;
+        margin-bottom: 0.5rem !important;
         font-weight: 600;
     }
     
-    /* Plotly Charts Background */
-    .js-plotly-plot {
-        border-radius: 12px;
-        overflow: hidden;
+    p, label, .stMarkdown {
+        color: #333333 !important;
+        font-size: 0.95rem;
     }
     
-    /* Main Content Cards */
-    [data-testid="stVerticalBlock"] > div {
-        background-color: white;
-        border-radius: 12px;
-        padding: 24px;
-        box-shadow: 0 2px 8px rgba(10, 37, 64, 0.08);
+    /* Compact sections */
+    [data-testid="stVerticalBlock"] {
+        gap: 0.5rem !important;
     }
     
-    /* Number Input */
+    [data-testid="stHorizontalBlock"] {
+        gap: 1rem !important;
+    }
+    
+    /* Number inputs - compact with readable text */
     input[type="number"] {
-        border-radius: 8px !important;
+        border-radius: 6px !important;
         border: 2px solid #e5e7eb !important;
+        padding: 0.4rem 0.6rem !important;
+        color: #0a2540 !important;
+        font-weight: 600 !important;
+        font-size: 1rem !important;
     }
     
     input[type="number"]:focus {
         border-color: #e86842 !important;
-        box-shadow: 0 0 0 3px rgba(232, 104, 66, 0.1) !important;
+        box-shadow: 0 0 0 2px rgba(232, 104, 66, 0.1) !important;
     }
     
-    /* Slider */
+    /* Labels - readable */
+    label {
+        color: #0a2540 !important;
+        font-weight: 500 !important;
+        font-size: 0.9rem !important;
+    }
+    
+    /* Slider - Acadia coral */
     .stSlider > div > div > div {
         background-color: #e86842 !important;
     }
     
-    /* Footer Text */
+    /* Compact metric cards */
+    [data-testid="stMetricValue"] {
+        font-size: 1.8rem !important;
+        color: #0a2540 !important;
+        font-weight: 700 !important;
+    }
+    
+    [data-testid="stMetricLabel"] {
+        font-size: 0.85rem !important;
+        color: #666 !important;
+    }
+    
+    /* Hero metric - big but compact */
+    .hero-metric {
+        background: linear-gradient(135deg, #e86842 0%, #f5a142 100%);
+        padding: 1.5rem;
+        border-radius: 10px;
+        text-align: center;
+        margin: 1rem 0;
+    }
+    
+    .hero-number {
+        font-size: 2.5rem;
+        font-weight: 700;
+        color: white;
+        margin: 0;
+    }
+    
+    .hero-label {
+        font-size: 1rem;
+        color: white;
+        opacity: 0.95;
+        margin-top: 0.3rem;
+    }
+    
+    /* Info boxes - compact with readable text */
+    .stAlert {
+        padding: 1rem !important;
+        border-radius: 8px !important;
+        border-left: 4px solid #1e5f6f !important;
+        background-color: #f0f7f9 !important;
+        color: #0a2540 !important;
+    }
+    
+    .stAlert p, .stAlert li {
+        color: #0a2540 !important;
+        margin: 0.3rem 0 !important;
+    }
+    
+    /* Success box */
+    .stSuccess {
+        background-color: #f0f9f4 !important;
+        border-left-color: #1e5f6f !important;
+        color: #0a2540 !important;
+    }
+    
+    /* Expander - compact */
+    .streamlit-expanderHeader {
+        background-color: #f8f9fa !important;
+        border-radius: 6px !important;
+        border-left: 3px solid #1e5f6f !important;
+        color: #0a2540 !important;
+        font-weight: 600 !important;
+        padding: 0.6rem 1rem !important;
+        font-size: 0.95rem !important;
+    }
+    
+    .streamlit-expanderContent {
+        padding: 1rem !important;
+        background-color: #fafbfc !important;
+    }
+    
+    /* Chart - compact */
+    .js-plotly-plot {
+        margin: 0.5rem 0 !important;
+    }
+    
+    /* Dividers - minimal */
+    hr {
+        margin: 1rem 0 !important;
+        border-color: #e5e7eb !important;
+    }
+    
+    /* CTA Button */
+    .cta-button {
+        background: linear-gradient(135deg, #e86842 0%, #f5a142 100%);
+        color: white;
+        padding: 0.8rem 2rem;
+        border-radius: 6px;
+        text-decoration: none;
+        font-weight: 600;
+        display: inline-block;
+        box-shadow: 0 3px 5px rgba(232, 104, 66, 0.3);
+        transition: transform 0.2s;
+    }
+    
+    .cta-button:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 5px 10px rgba(232, 104, 66, 0.4);
+    }
+    
+    /* Footer */
     .caption {
-        color: #1e5f6f;
-        font-style: italic;
+        color: #999 !important;
+        font-size: 0.8rem !important;
+        text-align: center;
+        margin-top: 1rem !important;
+    }
+    
+    /* Remove extra padding */
+    .element-container {
+        margin-bottom: 0.5rem !important;
     }
     </style>
 """, unsafe_allow_html=True)
@@ -242,22 +248,11 @@ with col2:
 revenue_gap = target_revenue - current_revenue
 new_clients_needed = revenue_gap / acv if acv > 0 else 0
 
-st.markdown("---")
-st.markdown("### 🔍 What You Need")
-
-# Show the key number prominently
+# Show the key number prominently - compact
 st.markdown(f"""
-<div style='background: linear-gradient(135deg, #e86842 0%, #f5a142 100%); 
-            padding: 2rem; 
-            border-radius: 12px; 
-            text-align: center;
-            margin: 1rem 0;'>
-    <div style='font-size: 3rem; font-weight: bold; color: white;'>
-        {new_clients_needed:.0f}
-    </div>
-    <div style='font-size: 1.2rem; color: white; opacity: 0.9;'>
-        new clients needed to hit your goal
-    </div>
+<div class='hero-metric'>
+    <div class='hero-number'>{new_clients_needed:.0f}</div>
+    <div class='hero-label'>new clients needed to hit your goal</div>
 </div>
 """, unsafe_allow_html=True)
 
@@ -335,43 +330,42 @@ for i in range(1, 13):
 projected_annual_run_rate = projected_revenue[-1] * 12
 gap = target_revenue - (accumulated_revenue) # Gap in realized revenue vs goal (approx)
 
-# --- SIMPLE VISUALIZATION ---
-
-st.markdown("### 📈 Your 12-Month Forecast")
+# --- COMPACT VISUALIZATION ---
+st.markdown("### 📈 12-Month Forecast")
 
 fig = go.Figure()
 
-# Projected revenue line
 fig.add_trace(go.Scatter(
     x=months, 
     y=projected_revenue, 
     mode='lines+markers', 
-    name='Your Projection',
-    line=dict(color='#e86842', width=4),
+    name='Projection',
+    line=dict(color='#e86842', width=3),
     fill='tozeroy',
-    fillcolor='rgba(232, 104, 66, 0.1)'
+    fillcolor='rgba(232, 104, 66, 0.08)',
+    marker=dict(size=6)
 ))
 
-# Goal line
 target_monthly = target_revenue / 12
 fig.add_trace(go.Scatter(
     x=months, 
     y=[target_monthly]*12, 
     mode='lines', 
-    name='Your Goal',
-    line=dict(color='#1e5f6f', width=3, dash='dash')
+    name='Goal',
+    line=dict(color='#1e5f6f', width=2, dash='dash')
 ))
 
 fig.update_layout(
-    paper_bgcolor='rgba(0,0,0,0)',
-    plot_bgcolor='rgba(0,0,0,0)',
-    margin=dict(l=20, r=20, t=20, b=20),
+    paper_bgcolor='#ffffff',
+    plot_bgcolor='#fafbfc',
+    margin=dict(l=20, r=20, t=10, b=20),
     yaxis_tickprefix="$",
     yaxis_tickformat=",.0f",
     hovermode="x unified",
     showlegend=True,
-    legend=dict(orientation="h", yanchor="bottom", y=1.02, xanchor="right", x=1),
-    height=350
+    legend=dict(orientation="h", yanchor="bottom", y=1, xanchor="right", x=1),
+    height=280,
+    font=dict(size=11, color='#333')
 )
 
 st.plotly_chart(fig, use_container_width=True)
@@ -403,70 +397,35 @@ with metric_col3:
         f"${projected_revenue[-1]:,.0f}"
     )
 
-# --- ACTION PLAN ---
-st.markdown("---")
-st.markdown("### 💡 What This Means")
+# --- COMPACT ACTION PLAN ---
+st.markdown("### 💡 Bottom Line")
 
 # Simple reverse calculation
 needed_revenue = max(0, target_revenue - current_revenue)
 needed_clients = needed_revenue / acv if acv > 0 else 0
 needed_leads_annual = needed_clients / (conversion_rate/100) if conversion_rate > 0 else 0
 needed_leads_monthly = needed_leads_annual / 12
-
-# Traffic assumptions (simplified, fixed values to avoid complexity)
-traffic_to_lead_rate = 1.5 / 100  # 1.5% conversion
+traffic_to_lead_rate = 1.5 / 100
 needed_traffic = needed_leads_monthly / traffic_to_lead_rate if traffic_to_lead_rate > 0 else 0
 
-insight_col1, insight_col2 = st.columns([2, 1])
+if gap_to_goal > 0:
+    st.info(f"""
+**To hit ${target_revenue:,.0f}:** Need **{needed_leads_monthly:.0f} leads/month** (at {conversion_rate}% close rate) = ~**{needed_traffic:,.0f} monthly visitors** (1.5% conversion).  
+Current plan: **${accumulated_revenue:,.0f}** → Adjust sliders to close gap.
+    """)
+else:
+    st.success(f"""
+✓ **On track!** Projected **${accumulated_revenue:,.0f}** exceeds goal by **${abs(gap_to_goal):,.0f}** with {new_leads_monthly} leads/month at {conversion_rate}% close rate.
+    """)
 
-with insight_col1:
-    if gap_to_goal > 0:
-        st.info(f"""
-**To hit your ${target_revenue:,.0f} goal, you need:**
-
-- 📊 **{needed_leads_monthly:.0f} qualified leads per month** (at {conversion_rate}% close rate)
-- 🌐 **~{needed_traffic:,.0f} monthly website visitors** (assuming 1.5% lead conversion)
-- 📝 **Consistent content production** to drive that traffic
-
-**Your current plan projects ${accumulated_revenue:,.0f}** - adjust the sliders above to close the gap.
-        """)
-    else:
-        st.success(f"""
-🎉 **Great news!** Your current strategy exceeds your goal by **${abs(gap_to_goal):,.0f}**.
-
-You're projected to hit **${accumulated_revenue:,.0f}** with:
-- {new_leads_monthly} leads per month
-- {conversion_rate}% conversion rate  
-- {sales_cycle} month sales cycle
-        """)
-
-with insight_col2:
-    st.markdown(f"""
-<div class='metric-container'>
-    <div class='metric-value'>{needed_leads_monthly:.0f}</div>
-    <div class='metric-label'>Leads/Month Target</div>
-</div>
-    """, unsafe_allow_html=True)
-
-# --- CTA ---
-st.markdown("---")
+# --- COMPACT CTA ---
 st.markdown("""
-<div style='text-align: center; padding: 2rem 0;'>
-    <h3 style='color: #0a2540; margin-bottom: 1rem;'>Ready to Execute Your Growth Plan?</h3>
-    <p style='color: #666; margin-bottom: 1.5rem;'>Let's build the content strategy to get you there.</p>
-    <a href='https://www.acadia.im#contact' 
-       style='background: linear-gradient(135deg, #e86842 0%, #f5a142 100%);
-              color: white;
-              padding: 14px 32px;
-              border-radius: 8px;
-              text-decoration: none;
-              font-weight: 600;
-              display: inline-block;
-              box-shadow: 0 4px 6px rgba(232, 104, 66, 0.3);'>
+<div style='text-align: center; padding: 1.5rem 0 1rem 0;'>
+    <p style='color: #0a2540; margin-bottom: 1rem; font-weight: 600;'>Ready to execute this plan?</p>
+    <a href='https://www.acadia.im#contact' class='cta-button'>
         Get Started with Acadia
     </a>
 </div>
 """, unsafe_allow_html=True)
 
-st.markdown("---")
-st.caption("Built for Acadia.im | B2B Growth Engineering")
+st.caption("Built for Acadia.im")
