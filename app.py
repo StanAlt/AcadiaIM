@@ -66,11 +66,12 @@ st.markdown("""
         gap: 1rem !important;
     }
     
-    /* Number inputs - compact with readable text */
+    /* Number inputs - white background with dark readable text */
     input[type="number"] {
         border-radius: 6px !important;
         border: 2px solid #e5e7eb !important;
         padding: 0.4rem 0.6rem !important;
+        background-color: #ffffff !important;
         color: #0a2540 !important;
         font-weight: 600 !important;
         font-size: 1rem !important;
@@ -79,6 +80,13 @@ st.markdown("""
     input[type="number"]:focus {
         border-color: #e86842 !important;
         box-shadow: 0 0 0 2px rgba(232, 104, 66, 0.1) !important;
+        background-color: #ffffff !important;
+    }
+    
+    /* Make sure text inputs are also readable */
+    input[type="text"] {
+        background-color: #ffffff !important;
+        color: #0a2540 !important;
     }
     
     /* Labels - readable */
