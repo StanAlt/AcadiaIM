@@ -273,11 +273,11 @@ with col1:
 with col2:
     st.markdown("#### 🎯 Your Goal")
     target_revenue = st.number_input(
-        "Revenue Target", 
+        "Annual Run Rate Target", 
         value=1_800_000, 
         step=50000,
         format="%d",
-        help="Where you want to be in 12 months"
+        help="Target annual run rate (monthly revenue × 12) by end of year"
     )
     st.caption(f"${target_revenue:,}")
     
@@ -368,31 +368,35 @@ for i in range(1, 13):
     accumulated_revenue += total_month_rev
 
 projected_annual_run_rate = projected_revenue[-1] * 12
-gap = target_revenue - (accumulated_revenue) # Gap in realized revenue vs goal (approx)
+gap_to_goal = target_revenue - projected_annual_run_rate  # Gap in run rate, not accumulated
+goal_achieved = projected_annual_run_rate >= target_revenue
 
 # --- COMPACT VISUALIZATION ---
 st.markdown("### 📈 12-Month Forecast")
 
 fig = go.Figure()
 
+# Projected revenue line - color based on whether goal is achieved
+line_color = '#1e5f6f' if goal_achieved else '#e86842'
 fig.add_trace(go.Scatter(
     x=months, 
     y=projected_revenue, 
     mode='lines+markers', 
     name='Projection',
-    line=dict(color='#e86842', width=3),
+    line=dict(color=line_color, width=3),
     fill='tozeroy',
-    fillcolor='rgba(232, 104, 66, 0.08)',
+    fillcolor=f'rgba(30, 95, 111, 0.08)' if goal_achieved else 'rgba(232, 104, 66, 0.08)',
     marker=dict(size=6)
 ))
 
+# Goal line - monthly run rate target
 target_monthly = target_revenue / 12
 fig.add_trace(go.Scatter(
     x=months, 
     y=[target_monthly]*12, 
     mode='lines', 
-    name='Goal',
-    line=dict(color='#1e5f6f', width=2, dash='dash')
+    name='Goal Run Rate',
+    line=dict(color='#1e5f6f' if not goal_achieved else '#10b981', width=2, dash='dash')
 ))
 
 fig.update_layout(
@@ -416,25 +420,25 @@ metric_col1, metric_col2, metric_col3 = st.columns(3)
 with metric_col1:
     delta_val = int(accumulated_revenue - current_revenue)
     metric_col1.metric(
-        "Projected Revenue", 
+        "Projected 12M Revenue", 
         f"${int(accumulated_revenue):,}",
-        delta=f"${delta_val:,} vs today"
+        delta=f"${delta_val:,} vs current"
     )
 
 with metric_col2:
-    gap_to_goal = target_revenue - accumulated_revenue
-    gap_percent = (gap_to_goal / target_revenue * 100) if target_revenue > 0 else 0
     metric_col2.metric(
+        "Projected Run Rate", 
+        f"${int(projected_annual_run_rate):,}",
+        delta=f"Month 12 × 12"
+    )
+
+with metric_col3:
+    gap_percent = (gap_to_goal / target_revenue * 100) if target_revenue > 0 else 0
+    metric_col3.metric(
         "Gap to Goal", 
         f"${int(abs(gap_to_goal)):,}",
         delta=f"{int(-gap_percent)}%" if gap_to_goal > 0 else f"+{int(abs(gap_percent))}%",
         delta_color="inverse"
-    )
-
-with metric_col3:
-    metric_col3.metric(
-        "Monthly Run Rate (M12)", 
-        f"${int(projected_revenue[-1]):,}"
     )
 
 # --- COMPACT ACTION PLAN ---
@@ -450,17 +454,17 @@ needed_traffic = needed_leads_monthly / traffic_to_lead_rate if traffic_to_lead_
 
 if gap_to_goal > 0:
     st.info(f"""
-**To hit ${int(target_revenue):,} target:**
+**To hit ${int(target_revenue):,} run rate target:**
 
 • Need **{int(needed_leads_monthly)} leads per month** (at {int(conversion_rate)}% close rate)  
 • Requires ~**{int(needed_traffic):,} monthly website visitors** (1.5% lead conversion)  
-• Your current plan projects **${int(accumulated_revenue):,}** → Adjust sliders above to close the gap
+• Your projected run rate: **${int(projected_annual_run_rate):,}** → Adjust sliders above to close the gap
     """)
 else:
     st.success(f"""
-✓ **You're on track!**
+✓ **Goal achieved!**
 
-Projected **${int(accumulated_revenue):,}** exceeds your goal by **${int(abs(gap_to_goal)):,}**
+Your projected run rate of **${int(projected_annual_run_rate):,}** exceeds your goal by **${int(abs(gap_to_goal)):,}**
 
 With {int(new_leads_monthly)} leads per month at {int(conversion_rate)}% close rate
     """)
