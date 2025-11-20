@@ -12,45 +12,193 @@ st.set_page_config(
     initial_sidebar_state="expanded"
 )
 
-# Custom CSS to match Acadia.im's polished aesthetic
+# Custom CSS to match Acadia.im's exact brand aesthetic
 st.markdown("""
     <style>
+    @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=Crimson+Pro:wght@600;700&display=swap');
+    
     /* Main Background and Text */
     .main {
-        background-color: #ffffff;
-        font-family: 'Helvetica Neue', sans-serif;
+        background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 50%, #f8f9fa 100%);
+        font-family: 'IBM Plex Sans', system-ui, -apple-system, sans-serif;
     }
+    
+    /* Headings with Acadia Brand Font */
     h1, h2, h3 {
-        color: #111111;
-        font-weight: 600;
+        font-family: 'Crimson Pro', Georgia, serif;
+        color: #0a2540;
+        font-weight: 700;
     }
+    
+    h1 {
+        background: linear-gradient(135deg, #e86842 0%, #f5a142 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        font-size: 3rem !important;
+    }
+    
     .stApp {
         color: #333333;
     }
-    /* Sidebar Styling */
+    
+    /* Sidebar Styling - Acadia Navy */
     [data-testid="stSidebar"] {
-        background-color: #f8f9fa;
-        border-right: 1px solid #e9ecef;
+        background: linear-gradient(180deg, #0a2540 0%, #1e5f6f 100%);
+        border-right: 3px solid #e86842;
     }
-    /* metric container */
+    
+    [data-testid="stSidebar"] * {
+        color: #ffffff !important;
+    }
+    
+    [data-testid="stSidebar"] h1,
+    [data-testid="stSidebar"] h2,
+    [data-testid="stSidebar"] h3 {
+        color: #f5a142 !important;
+        -webkit-text-fill-color: #f5a142 !important;
+    }
+    
+    [data-testid="stSidebar"] label {
+        color: #ffffff !important;
+        font-weight: 500;
+    }
+    
+    /* Sidebar Inputs */
+    [data-testid="stSidebar"] input {
+        background-color: rgba(255, 255, 255, 0.1) !important;
+        color: #ffffff !important;
+        border: 1px solid rgba(255, 255, 255, 0.3) !important;
+        border-radius: 8px !important;
+    }
+    
+    [data-testid="stSidebar"] .stSlider > div > div > div {
+        background-color: #e86842 !important;
+    }
+    
+    /* Metric Cards */
     .metric-container {
-        background-color: #ffffff;
-        padding: 20px;
-        border-radius: 8px;
-        box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-        border: 1px solid #eee;
+        background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+        padding: 24px;
+        border-radius: 12px;
+        box-shadow: 0 4px 6px rgba(10, 37, 64, 0.1);
+        border: 1px solid #e5e7eb;
         text-align: center;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
+    
+    .metric-container:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 8px 12px rgba(232, 104, 66, 0.2);
+    }
+    
     .metric-value {
-        font-size: 28px;
-        font-weight: bold;
-        color: #2E5BFF;
+        font-size: 32px;
+        font-weight: 700;
+        background: linear-gradient(135deg, #e86842 0%, #f5a142 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
     }
+    
     .metric-label {
-        font-size: 14px;
-        color: #666;
+        font-size: 12px;
+        color: #1e5f6f;
         text-transform: uppercase;
-        letter-spacing: 1px;
+        letter-spacing: 1.5px;
+        font-weight: 600;
+        margin-top: 8px;
+    }
+    
+    /* Tabs - Acadia Colors */
+    .stTabs [data-baseweb="tab-list"] {
+        gap: 8px;
+        background-color: transparent;
+    }
+    
+    .stTabs [data-baseweb="tab"] {
+        background-color: #f8f9fa;
+        color: #0a2540;
+        border-radius: 8px 8px 0 0;
+        padding: 12px 24px;
+        font-weight: 600;
+        border: 2px solid transparent;
+    }
+    
+    .stTabs [aria-selected="true"] {
+        background: linear-gradient(135deg, #e86842 0%, #f5a142 100%);
+        color: white !important;
+        border-color: #e86842;
+    }
+    
+    /* Buttons */
+    .stButton > button {
+        background: linear-gradient(135deg, #e86842 0%, #f5a142 100%);
+        color: white;
+        border: none;
+        border-radius: 8px;
+        padding: 12px 32px;
+        font-weight: 600;
+        font-family: 'IBM Plex Sans', sans-serif;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 6px rgba(232, 104, 66, 0.3);
+    }
+    
+    .stButton > button:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 12px rgba(232, 104, 66, 0.4);
+    }
+    
+    /* Info/Warning Boxes */
+    .stAlert {
+        border-radius: 12px;
+        border-left: 4px solid #e86842;
+        background-color: #fff9f5;
+    }
+    
+    /* Expander - Acadia Style */
+    .streamlit-expanderHeader {
+        background-color: #f8f9fa;
+        border-radius: 8px;
+        border-left: 4px solid #1e5f6f;
+        color: #0a2540;
+        font-weight: 600;
+    }
+    
+    /* Plotly Charts Background */
+    .js-plotly-plot {
+        border-radius: 12px;
+        overflow: hidden;
+    }
+    
+    /* Main Content Cards */
+    [data-testid="stVerticalBlock"] > div {
+        background-color: white;
+        border-radius: 12px;
+        padding: 24px;
+        box-shadow: 0 2px 8px rgba(10, 37, 64, 0.08);
+    }
+    
+    /* Number Input */
+    input[type="number"] {
+        border-radius: 8px !important;
+        border: 2px solid #e5e7eb !important;
+    }
+    
+    input[type="number"]:focus {
+        border-color: #e86842 !important;
+        box-shadow: 0 0 0 3px rgba(232, 104, 66, 0.1) !important;
+    }
+    
+    /* Slider */
+    .stSlider > div > div > div {
+        background-color: #e86842 !important;
+    }
+    
+    /* Footer Text */
+    .caption {
+        color: #1e5f6f;
+        font-style: italic;
     }
     </style>
 """, unsafe_allow_html=True)
