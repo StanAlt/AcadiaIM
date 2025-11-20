@@ -4,6 +4,7 @@ import Hero from './components/Hero';
 import Process from './components/Process';
 import ContentFunnel from './components/ContentFunnel';
 import Services from './components/Services';
+import GrowthPlanner from './components/GrowthPlanner';
 import About from './components/About';
 import FAQ from './components/FAQ';
 import Contact from './components/Contact';
@@ -17,6 +18,7 @@ function App() {
       <Process />
       <ContentFunnel />
       <Services />
+      <GrowthPlanner />
       <About />
       <FAQ />
       <Contact />
