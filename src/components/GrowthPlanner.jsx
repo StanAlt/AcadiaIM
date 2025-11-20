@@ -8,6 +8,7 @@ export default function GrowthPlanner() {
   const [acv, setAcv] = useState(30000);
   const [retention, setRetention] = useState(95);
   const [targetGrowth, setTargetGrowth] = useState(50);
+  const [pipelineValue, setPipelineValue] = useState(0);
   
   // Growth Levers State
   const [newLeadsMonthly, setNewLeadsMonthly] = useState(100);
@@ -31,9 +32,22 @@ export default function GrowthPlanner() {
     
     const newClientsMonthly = newLeadsMonthly * (conversionRate / 100);
     
+    // Pipeline deals - assume they're at average age (halfway through sales cycle)
+    const pipelineDealsPerMonth = pipelineValue > 0 ? pipelineValue / acv : 0;
+    const avgPipelineAge = Math.ceil(salesCycle / 2);
+    
     for (let i = 1; i <= 12; i++) {
-      monthlyRecurring = monthlyRecurring * (1 - ((100 - retention) / 100) / 12);
+      // Retention/Upsell logic: >100% = net expansion from existing clients
+      if (retention > 100) {
+        // Upsell mode: existing revenue grows
+        const monthlyGrowthRate = ((retention - 100) / 100) / 12;
+        monthlyRecurring = monthlyRecurring * (1 + monthlyGrowthRate);
+      } else {
+        // Churn mode: existing revenue decays
+        monthlyRecurring = monthlyRecurring * (1 - ((100 - retention) / 100) / 12);
+      }
       
+      // New revenue from new client acquisition
       let newRevStream = 0;
       if (i > salesCycle) {
         const monthsGeneratingNewRev = i - salesCycle;
@@ -41,7 +55,14 @@ export default function GrowthPlanner() {
         newRevStream = totalNewClientsActive * (acv / 12);
       }
       
-      const totalMonthRev = monthlyRecurring + newRevStream;
+      // Pipeline deals converting (if current month >= avg pipeline age)
+      let pipelineRevStream = 0;
+      if (i >= avgPipelineAge && pipelineDealsPerMonth > 0) {
+        const monthsOfPipelineRev = i - avgPipelineAge + 1;
+        pipelineRevStream = pipelineDealsPerMonth * (acv / 12) * Math.min(monthsOfPipelineRev, 12);
+      }
+      
+      const totalMonthRev = monthlyRecurring + newRevStream + pipelineRevStream;
       accumulatedRevenue += totalMonthRev;
       
       data.push({
@@ -56,7 +77,7 @@ export default function GrowthPlanner() {
       accumulated: accumulatedRevenue,
       runRate: data[11].projected * 12 
     };
-  }, [currentRevenue, acv, retention, newLeadsMonthly, conversionRate, salesCycle, targetRevenue]);
+  }, [currentRevenue, acv, retention, newLeadsMonthly, conversionRate, salesCycle, targetRevenue, pipelineValue]);
   
   const reverseFunnel = useMemo(() => {
     const neededRevenue = Math.max(0, targetRevenue - currentRevenue);
@@ -88,7 +109,7 @@ export default function GrowthPlanner() {
             Growth <span className="gradient-text">Planner</span>
           </h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Engineer your growth. Simulate scenarios to forecast 2026 revenue.
+            Engineer your growth: Run scenarios to forecast next year's revenue.
           </p>
         </div>
 
@@ -100,7 +121,7 @@ export default function GrowthPlanner() {
             <div className="bg-white rounded-xl shadow-lg p-6 border border-gray-200">
               <h3 className="text-lg font-bold text-acadia-navy mb-4 flex items-center gap-2">
                 <Target className="w-5 h-5 text-acadia-coral" />
-                Agency Profile
+                Company Profile
               </h3>
               
               <div className="space-y-4">
@@ -135,15 +156,42 @@ export default function GrowthPlanner() {
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-2">
                     Client Retention Rate: {retention}%
+                    {retention > 100 && (
+                      <span className="ml-2 text-xs font-semibold text-green-600 bg-green-50 px-2 py-1 rounded">
+                        🚀 UPSELL MODE
+                      </span>
+                    )}
                   </label>
                   <input
                     type="range"
                     min="0"
-                    max="100"
+                    max="120"
                     value={retention}
                     onChange={(e) => setRetention(Number(e.target.value))}
                     className="w-full accent-acadia-coral"
                   />
+                  <div className="flex justify-between text-xs text-gray-500 mt-1">
+                    <span>Churn</span>
+                    <span>100% (Flat)</span>
+                    <span>120% (Expansion)</span>
+                  </div>
+                </div>
+                
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                    Current Pipeline Value ($)
+                  </label>
+                  <input
+                    type="number"
+                    value={pipelineValue}
+                    onChange={(e) => setPipelineValue(Number(e.target.value))}
+                    step="10000"
+                    placeholder="0"
+                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-acadia-coral focus:border-transparent"
+                  />
+                  <span className="text-xs text-gray-500">
+                    {pipelineValue > 0 ? `$${pipelineValue.toLocaleString()} - Deals in progress` : 'Deals already in your pipeline'}
+                  </span>
                 </div>
               </div>
             </div>
