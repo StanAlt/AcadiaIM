@@ -444,29 +444,29 @@ with metric_col3:
 # --- COMPACT ACTION PLAN ---
 st.markdown("### 💡 Bottom Line")
 
-# Simple reverse calculation
-needed_revenue = max(0, target_revenue - current_revenue)
-needed_clients = needed_revenue / acv if acv > 0 else 0
-needed_leads_annual = needed_clients / (conversion_rate/100) if conversion_rate > 0 else 0
-needed_leads_monthly = needed_leads_annual / 12
+# Reverse calculation based on run rate gap
+run_rate_gap = max(0, target_revenue - projected_annual_run_rate)
+needed_monthly_rev_increase = run_rate_gap / 12
+needed_clients_for_gap = needed_monthly_rev_increase / (acv / 12) if acv > 0 else 0
+needed_leads_for_gap = needed_clients_for_gap / (conversion_rate/100) if conversion_rate > 0 else 0
 traffic_to_lead_rate = 1.5 / 100
-needed_traffic = needed_leads_monthly / traffic_to_lead_rate if traffic_to_lead_rate > 0 else 0
+needed_traffic = needed_leads_for_gap / traffic_to_lead_rate if traffic_to_lead_rate > 0 else 0
 
-if gap_to_goal > 0:
-    st.info(f"""
-**To hit ${int(target_revenue):,} run rate target:**
-
-• Need **{int(needed_leads_monthly)} leads per month** (at {int(conversion_rate)}% close rate)  
-• Requires ~**{int(needed_traffic):,} monthly website visitors** (1.5% lead conversion)  
-• Your projected run rate: **${int(projected_annual_run_rate):,}** → Adjust sliders above to close the gap
-    """)
-else:
+if goal_achieved:
     st.success(f"""
 ✓ **Goal achieved!**
 
 Your projected run rate of **${int(projected_annual_run_rate):,}** exceeds your goal by **${int(abs(gap_to_goal)):,}**
 
 With {int(new_leads_monthly)} leads per month at {int(conversion_rate)}% close rate
+    """)
+else:
+    st.info(f"""
+**To hit ${int(target_revenue):,} run rate target:**
+
+• Need **{int(needed_leads_for_gap)} more leads per month** (at {int(conversion_rate)}% close rate)  
+• Requires ~**{int(needed_traffic):,} additional monthly website visitors** (1.5% lead conversion)  
+• Your projected run rate: **${int(projected_annual_run_rate):,}** → Adjust sliders above to close the gap
     """)
 
 # --- COMPACT CTA ---
