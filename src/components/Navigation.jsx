@@ -45,9 +45,13 @@ export default function Navigation() {
             }`}>
               FAQ
             </a>
-            <a href="/growth-plan" className={`font-medium transition-colors ${
-              isScrolled ? 'text-acadia-navy hover:text-acadia-coral' : 'text-white hover:text-acadia-gold'
-            }`}>
+            <a 
+              href="https://acadiaim.streamlit.app/" 
+              target="_blank"
+              rel="noopener noreferrer"
+              className={`font-medium transition-colors ${
+                isScrolled ? 'text-acadia-navy hover:text-acadia-coral' : 'text-white hover:text-acadia-gold'
+              }`}>
               Growth Plan
             </a>
             <a href="#contact" className={`px-6 py-3 rounded-lg font-semibold transition-all ${
