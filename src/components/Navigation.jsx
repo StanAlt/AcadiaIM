@@ -5,6 +5,7 @@ import AcadiaLogo from './AcadiaLogo';
 export default function Navigation() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [showResourcesDropdown, setShowResourcesDropdown] = useState(false);
+  const [dropdownTimeout, setDropdownTimeout] = useState(null);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -14,17 +15,40 @@ export default function Navigation() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  const handleMouseEnter = () => {
+    if (dropdownTimeout) {
+      clearTimeout(dropdownTimeout);
+      setDropdownTimeout(null);
+    }
+    setShowResourcesDropdown(true);
+  };
+
+  const handleMouseLeave = () => {
+    const timeout = setTimeout(() => {
+      setShowResourcesDropdown(false);
+    }, 300); // 300ms delay before hiding
+    setDropdownTimeout(timeout);
+  };
+
   return (
     <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
       isScrolled ? 'bg-white shadow-lg' : 'bg-transparent'
     }`}>
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">
-          <div className={`flex items-center transition-colors duration-300 ${
-            isScrolled ? 'text-acadia-navy' : 'text-white'
-          }`}>
+          <a 
+            href="#" 
+            onClick={(e) => {
+              e.preventDefault();
+              window.location.hash = '';
+              window.scrollTo({ top: 0, behavior: 'smooth' });
+            }}
+            className={`flex items-center transition-colors duration-300 cursor-pointer ${
+              isScrolled ? 'text-acadia-navy' : 'text-white'
+            }`}
+          >
             <AcadiaLogo className="h-12" />
-          </div>
+          </a>
           
           <div className="hidden md:flex items-center space-x-8">
             <a href="#process" className={`font-medium transition-colors ${
@@ -46,8 +70,8 @@ export default function Navigation() {
             {/* Resources Dropdown */}
             <div 
               className="relative"
-              onMouseEnter={() => setShowResourcesDropdown(true)}
-              onMouseLeave={() => setShowResourcesDropdown(false)}
+              onMouseEnter={handleMouseEnter}
+              onMouseLeave={handleMouseLeave}
             >
               <button 
                 className={`font-medium transition-colors flex items-center gap-1 ${
