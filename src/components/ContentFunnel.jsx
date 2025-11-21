@@ -161,11 +161,11 @@ export default function ContentFunnel() {
                 hoveredStage ? 'opacity-0 scale-95' : 'opacity-100 scale-100'
               }`}>
                 <div className="bg-white/5 backdrop-blur-xl rounded-3xl p-12 border border-white/10 h-full flex flex-col items-center justify-center text-center">
-                  <div className="w-32 h-32 rounded-full bg-gradient-to-br from-acadia-coral to-acadia-gold flex items-center justify-center mb-8 animate-pulse-slow">
-                    <TrendingUp className="w-16 h-16 text-white" strokeWidth={2} />
+                  <div className="w-24 h-24 rounded-full bg-gradient-to-br from-acadia-coral to-acadia-gold flex items-center justify-center mb-12 animate-pulse-slow">
+                    <TrendingUp className="w-12 h-12 text-white" strokeWidth={2} />
                   </div>
-                  <h3 className="text-3xl font-bold text-white mb-4">Three Stages in Your Funnel</h3>
-                  <p className="text-xl text-gray-300">
+                  <h3 className="text-3xl font-bold text-white mb-6 leading-tight">Three Stages in Your Funnel</h3>
+                  <p className="text-xl text-gray-300 leading-relaxed max-w-md">
                     Use SEO and thought leadership to get visitors. Nurture them with valuable content and drive them down the funnel.
                   </p>
                 </div>
