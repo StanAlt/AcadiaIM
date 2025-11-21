@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react';
+import { ChevronDown } from 'lucide-react';
 import AcadiaLogo from './AcadiaLogo';
 
 export default function Navigation() {
   const [isScrolled, setIsScrolled] = useState(false);
+  const [showResourcesDropdown, setShowResourcesDropdown] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -40,18 +42,47 @@ export default function Navigation() {
             }`}>
               About
             </a>
-            <a href="#faq" className={`font-medium transition-colors ${
-              isScrolled ? 'text-acadia-navy hover:text-acadia-coral' : 'text-white hover:text-acadia-gold'
-            }`}>
-              FAQ
-            </a>
-            <a 
-              href="#growth-plan"
-              className={`font-medium transition-colors ${
-                isScrolled ? 'text-acadia-navy hover:text-acadia-coral' : 'text-white hover:text-acadia-gold'
-              }`}>
-              Growth Plan
-            </a>
+            
+            {/* Resources Dropdown */}
+            <div 
+              className="relative"
+              onMouseEnter={() => setShowResourcesDropdown(true)}
+              onMouseLeave={() => setShowResourcesDropdown(false)}
+            >
+              <button 
+                className={`font-medium transition-colors flex items-center gap-1 ${
+                  isScrolled ? 'text-acadia-navy hover:text-acadia-coral' : 'text-white hover:text-acadia-gold'
+                }`}
+              >
+                Resources
+                <ChevronDown className={`w-4 h-4 transition-transform ${showResourcesDropdown ? 'rotate-180' : ''}`} />
+              </button>
+              
+              {showResourcesDropdown && (
+                <div className="absolute top-full left-0 mt-2 w-48 bg-white rounded-lg shadow-xl border border-gray-100 py-2 z-50">
+                  <a 
+                    href="#blog"
+                    className="block px-4 py-2 text-acadia-navy hover:bg-acadia-coral hover:text-white transition-colors"
+                  >
+                    📚 Blog
+                  </a>
+                  <a 
+                    href="#growth-plan"
+                    className="block px-4 py-2 text-acadia-navy hover:bg-acadia-coral hover:text-white transition-colors"
+                  >
+                    📊 Growth Apps
+                  </a>
+                  <a 
+                    href="#podcast"
+                    className="block px-4 py-2 text-gray-400 cursor-not-allowed"
+                    onClick={(e) => e.preventDefault()}
+                  >
+                    🎙️ Podcast <span className="text-xs">(Soon)</span>
+                  </a>
+                </div>
+              )}
+            </div>
+            
             <a href="#contact" className={`px-6 py-3 rounded-lg font-semibold transition-all ${
               isScrolled 
                 ? 'bg-acadia-coral text-white hover:bg-opacity-90' 
