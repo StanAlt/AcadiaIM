@@ -65,17 +65,17 @@ export default function ContentFunnel() {
 
       <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8">
         {/* Header */}
-        <div className="text-center mb-16">
-          <h2 className="section-title text-white mb-6">
+        <div className="text-center mb-24">
+          <h2 className="section-title text-white mb-8">
             The Content <span className="gradient-text">Funnel</span>
           </h2>
-          <p className="text-xl text-gray-300 max-w-3xl mx-auto">
+          <p className="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
             Strategic content at every stage of the buyer's journey—from first touch to closed deal
           </p>
         </div>
 
         {/* Funnel Visualization */}
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
+        <div className="grid lg:grid-cols-2 gap-16 items-start">
           {/* Left Side - Interactive Stages */}
           <div className="space-y-6">
             {funnelStages.map((stage, index) => {
