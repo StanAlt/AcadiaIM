@@ -11,6 +11,7 @@ import Contact from './components/Contact';
 import Footer from './components/Footer';
 import Blog from './components/Blog';
 import BlogPost from './components/BlogPost';
+import Newsletter from './components/Newsletter';
 
 function App() {
   const [currentRoute, setCurrentRoute] = useState('home');
@@ -27,6 +28,10 @@ function App() {
         window.scrollTo(0, 0);
       } else if (hash === 'blog') {
         setCurrentRoute('blog');
+        setBlogSlug(null);
+        window.scrollTo(0, 0);
+      } else if (hash === 'newsletter') {
+        setCurrentRoute('newsletter');
         setBlogSlug(null);
         window.scrollTo(0, 0);
       } else {
@@ -49,6 +54,7 @@ function App() {
       
       {currentRoute === 'blog' && <Blog />}
       {currentRoute === 'blogPost' && <BlogPost slug={blogSlug} />}
+      {currentRoute === 'newsletter' && <Newsletter />}
       
       {currentRoute === 'home' && (
         <>

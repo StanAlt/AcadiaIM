@@ -97,6 +97,12 @@ export default function Navigation() {
                     📊 Growth Apps
                   </a>
                   <a 
+                    href="#newsletter"
+                    className="block px-4 py-2 text-acadia-navy hover:bg-acadia-coral hover:text-white transition-colors"
+                  >
+                    📧 Newsletters
+                  </a>
+                  <a 
                     href="#podcast"
                     className="block px-4 py-2 text-gray-400 cursor-not-allowed"
                     onClick={(e) => e.preventDefault()}
