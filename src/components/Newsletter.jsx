@@ -34,7 +34,7 @@ export default function Newsletter() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-acadia-navy via-acadia-navy to-gray-900">
+    <div className="min-h-screen bg-gradient-to-b from-acadia-navy via-acadia-navy to-gray-900 pt-20">
       {/* Header */}
       <header className="border-b border-acadia-coral/20 bg-acadia-navy/50 backdrop-blur-sm">
         <div className="max-w-7xl mx-auto px-6 lg:px-8 py-8">

@@ -56,7 +56,7 @@ const channels = [
   {
     icon: Video,
     title: "Video",
-    description: "Showcase your product, testimonials, and speaking engagements",
+    description: "Showcase your product, publish quick tutorials, and make the most of your podcasts",
     details: "Video content helps you showcase your product, present compelling testimonials, and make the most of your speaking engagements and podcast appearances. We turn your thought leadership into engaging visual content.",
     color: "from-acadia-gold to-acadia-teal"
   }
