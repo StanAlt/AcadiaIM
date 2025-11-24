@@ -14,7 +14,7 @@ export default function Newsletter() {
 
     try {
       // Google Sheets integration will be configured here
-      const response = await fetch('https://script.google.com/macros/s/YOUR_SCRIPT_ID/exec', {
+      const response = await fetch('https://script.google.com/macros/s/AKfycbxytxmiY96aZuxyUtSs9FIpyAp5nLB71k1lRSZUBcmQYLHrFG0QxJ_d33Idv4fAAAHB/exec', {
         method: 'POST',
         mode: 'no-cors',
         headers: {
