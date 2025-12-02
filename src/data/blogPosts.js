@@ -1,5 +1,113 @@
 export const blogPosts = [
   {
+    id: 11,
+    slug: 'stop-selling-start-teaching',
+    title: 'Stop Selling Your Product, Start Teaching Your Market',
+    excerpt: 'Every B2B fintech founder is in love with their product. But here\'s the problem: nobody cares. Learn why education-first marketing builds trust and drives real conversions.',
+    author: 'Acadia Team',
+    date: '2024-12-02',
+    readTime: '10 min read',
+    category: 'The Conversion Curve',
+    image: 'https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=800&q=80',
+    content: `
+**Nobody Cares About Your Product — No, Really.**
+
+Every B2B fintech founder I talk to thinks the same way: they are in love with their product and naturally assume everyone else should be as well. The beautiful dashboards. The unique data. The thoughtful workflows. It's a no-brainer!
+
+Then they start "marketing". On social. Through emails. On podcasts. Everywhere.
+
+But here's the problem: **nobody cares.**
+
+Why would they? What prospects actually care about is right in front of them all day. Their day-to-day work, the fires they're putting out, the meetings they're dreading, and the numbers they need to hit by quarter end.
+
+**If your marketing starts with you, you've lost the market's attention.**
+
+**If it starts with them, in time, you can earn their trust.**
+
+## Make the Shift from Selling to Educating
+
+When I helped build the marketing engine at Novus, at first, we made every mistake in the book. We talked endlessly about features. Our faster and better analytics, more granular risk data that was simply mind-blowing, better benchmarking that helped surface insights that we truly thought were brilliant. And all of that was true.
+
+But it wasn't until we started publishing educational content that everything changed.
+
+We wrote about isolating the value from position sizing before allocators even knew that was possible.
+
+We explained factor risk before it was mainstream with fundamental managers.
+
+We didn't pitch. We explained. We educated. We taught.
+
+And that shift exploded our reach. Fund managers, allocators, even competitors started reading our work because it helped them do their jobs better. And that was the goal. Some literally printed our papers and brought them to meetings saying, "Can you build this for us?" (True story – once a Tiger Cub manager did this and we were thrilled to learn they read all our work)
+
+**That's when I learned the golden rule of marketing in finance:**
+
+*If your content helps someone think differently, they'll remember who taught them. And when it comes time to making an investment they will think of you naturally.*
+
+## Education Builds Credibility (and Inbound Leads)
+
+B2B finance is a trust business. Whether you're selling risk software, alternative data, or execution services, every deal depends on one question:
+
+*"Do I believe these people understand my world?"*
+
+Education is the fastest path to "yes."
+
+**Blog posts** become quiet salespeople. They demonstrate that you've been in the trenches.
+
+**Whitepapers** serve as credibility multipliers — the long-tail assets that keep ranking and converting for months.
+
+**LinkedIn posts** act as micro-lessons that pull your firm out of obscurity and into daily feeds.
+
+Each piece becomes part of an ecosystem of trust. The more you teach, the more gravity your brand builds.
+
+## The Problem with Product-Centric Marketing
+
+The instinct to talk about the product is strong — especially in fintech. You've built something complex, differentiated, maybe even groundbreaking. So I am here to tell you that there is a place for this. But its way down the marketing funnel. What does that mean?
+
+Most buyers aren't in a position to appreciate your product yet. They are still just learning about you and are simply not ready. They are higher up the marketing funnel. So when they encounter your message, no matter how great, they're usually asking a simpler question:
+
+*"Can you help me solve this specific problem I'm dealing with today?"*
+
+If your website, email, or LinkedIn post doesn't speak to that problem immediately, it's noise.
+
+That's why every marketing strategy at Acadia starts with discovery — not copywriting. We study the workflows, friction points, and objections of your target personas before writing a single sentence. The content only works when it mirrors the exact thoughts inside your prospect's head.
+
+## The Funnel That Actually Works in B2B Finance
+
+At Acadia, we structure marketing as a funnel.
+
+Three stages: **Attract → Engage → Convert.**
+
+**Attract:** Create content that educates, not sells. SEO blogs, trend analysis, market explainers.
+
+**Engage:** Nurture curiosity with deep dives, interviews, best practices, and other long-form content that reveals how you think. (and gets you the MQL!)
+
+**Convert:** Close the deal with case studies, testimonials, and use cases that prove ROI.
+
+Every piece has a clear purpose. Every stage builds on the one before it. Remember your product marketing? Unleash that at the bottom of the funnel when the prospect knows you and is receptive.
+
+When done right, the system compounds: thought leadership drives traffic, traffic builds authority, and authority drives inbound leads. All without ever sending a cold email that feels spammy. (There is a wrong and right way to do cold email too)
+
+## Why Teaching Wins (Even When It's Slow)
+
+Education-based marketing doesn't spike overnight. It builds gradually — like a good fund track record.
+
+But once the flywheel starts spinning, it's unstoppable. Your SEO rankings rise. Your brand shows up in LLM responses and analyst Slack channels. Your credibility compounds even when you're asleep.
+
+And the next time a prospect finally books a demo or requests a deck, they'll already trust you — because you've been teaching them for months.
+
+**That's the real secret to marketing in B2B finance:**
+
+Stop trying to sell your product.
+
+Start helping your market make better decisions.
+
+Everything else follows naturally.
+
+---
+
+*This post is part of The Conversion Curve, a series from Acadia on how modern B2B finance companies attract, engage, and convert through authentic, education-first marketing.*
+    `
+  },
+  {
     id: 1,
     slug: 'why-fintech-content-marketing-fails',
     title: 'Why FinTech Companies Struggle with Content Marketing',
