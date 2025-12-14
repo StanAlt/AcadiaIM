@@ -6,6 +6,7 @@ import ContentFunnel from './components/ContentFunnel';
 import Services from './components/Services';
 import GrowthPlanner from './components/GrowthPlanner';
 import About from './components/About';
+import Testimonials from './components/Testimonials';
 import FAQ from './components/FAQ';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
@@ -64,6 +65,7 @@ function App() {
           <Services />
           <GrowthPlanner />
           <About />
+          <Testimonials />
           <FAQ />
           <Contact />
         </>
