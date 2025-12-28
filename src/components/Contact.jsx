@@ -6,11 +6,21 @@ export default function Contact() {
   const [formData, setFormData] = useState({
     name: '',
     company: '',
-    email: ''
+    email: '',
+    monthlyBudget: ''
   });
+
+  const [budgetError, setBudgetError] = useState('');
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    if (formData.monthlyBudget === '<5000') {
+      setBudgetError('For now, Acadia is best for teams with at least a $5k/month marketing budget.');
+      return;
+    }
+
+    setBudgetError('');
     
     // Trigger confetti animation
     confetti({
@@ -20,12 +30,16 @@ export default function Contact() {
     });
     
     // Create mailto link with form data
-    const subject = `Growth Inquiry from ${formData.company}`;
-    const body = `Name: ${formData.name}%0D%0ACompany: ${formData.company}%0D%0AEmail: ${formData.email}%0D%0A%0D%0AMessage:%0D%0A`;
+    const subject = `Growth Audit Call Request - ${formData.company}`;
+    const body = `Name: ${formData.name}%0D%0ACompany: ${formData.company}%0D%0AEmail: ${formData.email}%0D%0AMonthly Marketing Budget: ${formData.monthlyBudget}%0D%0A%0D%0AContext:%0D%0A`;
     window.location.href = `mailto:stan@acadia.im?subject=${subject}&body=${body}`;
   };
 
   const handleChange = (e) => {
+    if (e.target.name === 'monthlyBudget') {
+      setBudgetError('');
+    }
+
     setFormData({
       ...formData,
       [e.target.name]: e.target.value
@@ -46,10 +60,10 @@ export default function Contact() {
       <div className="relative z-10 max-w-4xl mx-auto px-6 lg:px-8">
         <div className="text-center mb-12">
           <h2 className="section-title mb-6">
-            Ready to Engineer <span className="text-acadia-gold">Your Growth?</span>
+            Book a <span className="text-acadia-gold">Growth Audit Call</span>
           </h2>
           <p className="text-xl text-gray-200 max-w-2xl mx-auto">
-            Let's discuss how AI-powered content strategy can transform your B2B FinTech marketing and drive measurable results.
+            If you're investing $5k+/month in marketing, I'll run a free SEO + competitive analysis and map quick GTM wins in a 30-minute call.
           </p>
         </div>
         
@@ -105,6 +119,34 @@ export default function Contact() {
                 placeholder="john@acmefintech.com"
               />
             </div>
+
+            <div className="group">
+              <label htmlFor="monthlyBudget" className="block text-sm font-semibold mb-2 text-gray-200">
+                Monthly Marketing Budget *
+              </label>
+              <select
+                id="monthlyBudget"
+                name="monthlyBudget"
+                required
+                value={formData.monthlyBudget}
+                onChange={handleChange}
+                className="w-full px-4 py-3 rounded-lg bg-white/10 border border-white/30 text-white focus:outline-none focus:ring-2 focus:ring-acadia-gold focus:border-transparent transition-all"
+              >
+                <option value="" disabled className="bg-acadia-navy">Select a range</option>
+                <option value="5000-10000" className="bg-acadia-navy">$5k–$10k</option>
+                <option value="10000-25000" className="bg-acadia-navy">$10k–$25k</option>
+                <option value="25000+" className="bg-acadia-navy">$25k+</option>
+                <option value="<5000" className="bg-acadia-navy">Under $5k</option>
+              </select>
+              {budgetError && (
+                <p className="mt-3 text-sm text-acadia-gold font-semibold">
+                  {budgetError}
+                </p>
+              )}
+              <p className="mt-3 text-sm text-gray-300">
+                We reply within 1 business day. No spam.
+              </p>
+            </div>
             
             <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
               <button
@@ -112,7 +154,7 @@ export default function Contact() {
                 className="inline-flex items-center justify-center gap-3 px-8 py-4 bg-acadia-coral text-white font-semibold rounded-lg hover:bg-opacity-90 transition-all duration-200 shadow-xl hover:shadow-2xl transform hover:-translate-y-1"
               >
                 <Send className="w-5 h-5" />
-                Get Started
+                Request a Call
               </button>
               
               <a 

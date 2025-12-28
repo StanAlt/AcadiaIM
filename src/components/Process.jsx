@@ -6,35 +6,35 @@ const steps = [
     number: "01",
     icon: Brain,
     title: "AI-Powered SEO Research",
-    description: "We tap advanced AI agents to conduct comprehensive SEO research, identifying optimal keyword targeting and competitive differentiators.",
+    description: "We use AI agents to conduct comprehensive SEO & AEO research identifying optimal keywords, gaps, and competitive differentiators.",
     color: "acadia-coral"
   },
   {
     number: "02",
     icon: Users,
     title: "Expert Discovery",
-    description: "Drawing on 25 years of investment management and FinTech experience, we build a deep understanding of your business, your target audience and their workflows, and the gaps your product fills.",
+    description: "Drawing on 25 years of investment management and FinTech experience, we build a deep understanding of your business, your target audience & their workflows, and the gaps your product fills.",
     color: "acadia-gold"
   },
   {
     number: "03",
     icon: FileText,
     title: "Targeted Content Creation",
-    description: "We create content that resonates with your audience, understanding nuanced customer journeys, the critical touch-points, and the complexities of the decision-making processes.",
+    description: "We create content that resonates with your audience, positions your offering as the organic solution to the problem, and builds trust within your target market.",
     color: "acadia-teal"
   },
   {
     number: "04",
     icon: Palette,
-    title: "Human Design & Refinement",
-    description: "Our team ensures every piece is beautiful and perfectly aligned with your brand voice and strategic objectives.",
+    title: "Design & Refinement",
+    description: "Our team ensures every piece is beautiful and perfectly aligned with your brand voice, style, and strategic objectives.",
     color: "acadia-coral"
   },
   {
     number: "05",
     icon: Share2,
     title: "Multi-Channel Distribution",
-    description: "Website blogs, whitepapers, social media, email campaigns, and video content—we maximize your reach across every relevant channel to grow your brand at record speed.",
+    description: "We help you get the highest ROI on your content through website blogs (boosting your SEO), whitepapers (creating MQLs), social media, email campaigns, and video content, maximizing your reach across every channel.",
     color: "acadia-gold"
   }
 ];

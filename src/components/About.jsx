@@ -31,7 +31,7 @@ export default function About() {
                 This extensive background provides a unique advantage: we don't just understand content marketing—we understand the complex decision-making processes of your customers and what it takes to attract leads, engage prospects and convert clients over long sales cycles.
               </p>
               <p>
-                By combining this expertise with cutting-edge AI technology, we create content strategies that reach your target audience and truly resonate with them building your brand and driving measurable growth.
+                By combining this expertise with cutting-edge AI technology and marketing best practices, we create content strategies that reach your target audience and truly resonate with them building your brand and driving measurable growth.
               </p>
             </div>
             

@@ -4,7 +4,7 @@ import { ChevronDown } from 'lucide-react';
 const faqs = [
   {
     question: "Do you write content with AI?",
-    answer: "No. I write content personally but I let AI inform me on the right keywords to hit, the right length and structure of the content. This ensures authentic, high-quality content with data-driven optimization."
+    answer: "No. AI is simply not there yet. I write content personally but I let AI inform me on the right keywords to hit, the right length and structure of the content. This ensures authentic, high-quality content with data-driven optimization. AI is used to build interactive dashboards, visuals, and infographics but it is always checked by a human."
   },
   {
     question: "What are the costs?",
@@ -12,11 +12,11 @@ const faqs = [
   },
   {
     question: "What other services do you offer?",
-    answer: "I do data analysis, data storytelling, competitive analysis, marketing consulting, design, web development, and CRM management. Each service is tailored to support your growth strategy."
+    answer: "I do data analysis, data storytelling, competitive analysis, marketing consulting, design, web development, social & email campaigns, and CRM management. Each service is tailored to support your growth strategy. Some clients use my services for data anysis and content only. Others choose to outsource their whole marketing operation to Acadia. I act as a fractional CMO and use my own resources to deliver the outcomes comprable to a five-person inhouse marketing team."
   },
   {
     question: "Do you work alone?",
-    answer: "No, I rely on AI agents as well as a small tested and trusted team of designers, SEO specialists, and web developers. I write the copy myself to ensure your brand voice stays authentic and consistent."
+    answer: "No, I rely on as a small tested and trusted team of designers, SEO specialists, and web developers. I write the copy myself to ensure your brand voice stays authentic and consistent. For research, analysis, and sythesis I use high-end AI agents that I have tuned to be extrememly accuracte and low on halluciantions. While we heavily use AI, all my work is validated by human intelligence."
   }
 ];
 

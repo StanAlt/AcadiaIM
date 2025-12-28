@@ -254,10 +254,10 @@ export default function ContentFunnel() {
         <div className="mt-20 text-center">
           <div className="inline-block bg-white/5 backdrop-blur-xl rounded-2xl p-8 border border-white/10">
             <p className="text-xl text-white mb-6">
-              Ready to build a content funnel that converts?
+              Ready for a free SEO + competitive audit?
             </p>
             <a href="#contact" className="btn-primary inline-flex items-center justify-center">
-              Let's Build Your Funnel
+              Book a Growth Audit Call
             </a>
           </div>
         </div>

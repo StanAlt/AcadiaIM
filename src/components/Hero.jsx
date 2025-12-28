@@ -25,12 +25,12 @@ export default function Hero() {
           </h1>
           
           <p className="text-xl md:text-2xl text-gray-200 max-w-3xl mx-auto leading-relaxed animate-slide-up animation-delay-200">
-            We combine deep AI research with 25 years of FinTech expertise to create content that drives measurable growth in complex B2B sales cycles.
+            We combine 25 years of FinTech & Investment Management expertise with modern marketing strategies to build thought leadership that drives measurable growth.
           </p>
           
           <div className="flex flex-col sm:flex-row gap-4 justify-center pt-8 animate-slide-up animation-delay-400">
             <a href="#contact" className="btn-primary inline-flex items-center justify-center gap-2 group">
-              Start Your Growth Journey
+              Book a Growth Audit Call
               <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
             </a>
             <a href="#process" className="btn-secondary group">

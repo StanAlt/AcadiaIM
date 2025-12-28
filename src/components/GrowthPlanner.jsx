@@ -4,20 +4,20 @@ import { TrendingUp, Users, Zap, Target, FileText, BarChart3 } from 'lucide-reac
 
 export default function GrowthPlanner() {
   // Agency Profile State
-  const [currentRevenue, setCurrentRevenue] = useState(1200000);
+  const [currentRevenue, setCurrentRevenue] = useState(3200000);
   const [acv, setAcv] = useState(30000);
-  const [retention, setRetention] = useState(95);
-  const [targetGrowth, setTargetGrowth] = useState(50);
-  const [pipelineValue, setPipelineValue] = useState(0);
+  const [retention, setRetention] = useState(92);
+  const [targetGrowth, setTargetGrowth] = useState(35);
+  const [pipelineValue, setPipelineValue] = useState(100000);
   
   // Growth Levers State
-  const [newLeadsMonthly, setNewLeadsMonthly] = useState(100);
-  const [conversionRate, setConversionRate] = useState(5);
+  const [newLeadsMonthly, setNewLeadsMonthly] = useState(50);
+  const [conversionRate, setConversionRate] = useState(2.5);
   const [salesCycle, setSalesCycle] = useState(6);
   
   // Reverse Funnel State
   const [trafficToLeadRate, setTrafficToLeadRate] = useState(1.5);
-  const [avgViewsPerPost, setAvgViewsPerPost] = useState(250);
+  const [avgViewsPerPost, setAvgViewsPerPost] = useState(550);
   
   // Active Tab
   const [activeTab, setActiveTab] = useState('forecast');
