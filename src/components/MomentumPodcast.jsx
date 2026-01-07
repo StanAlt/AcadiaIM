@@ -1,7 +1,44 @@
-import React from 'react';
-import { Mic, ArrowRight, ExternalLink, Headphones } from 'lucide-react';
+import React, { useState } from 'react';
+import { Mic, ArrowRight, ExternalLink, Headphones, ChevronLeft, ChevronRight } from 'lucide-react';
+
+const podcastEpisodes = [
+  {
+    id: 1,
+    title: "From Data Chaos to Clarity: How AI Empowers Hedge Funds to Act Faster",
+    videoId: "GKiC3ZHE_34",
+  },
+  {
+    id: 2,
+    title: "How Canoe Intelligence Uses AI to Eliminate Private Fund Data Chaos",
+    videoId: "LGXbyDO4akk",
+  },
+  {
+    id: 3,
+    title: "Real-Time AI in FinTech: How Conductor Is Redefining Fraud Detection",
+    videoId: "XQL1hTSq5uM",
+  },
+  {
+    id: 4,
+    title: "FinTech for the Underserved: How AI Is Transforming Banking and Payments in Canada",
+    videoId: "zjGanOovDw8",
+  },
+  {
+    id: 5,
+    title: "How Agentic AI Is Eliminating Finance Workflow Pain Between Contract and Cash",
+    videoId: "GKiC3ZHE_34",
+  },
+];
 
 export default function MomentumPodcast() {
+  const [currentEpisode, setCurrentEpisode] = useState(0);
+
+  const nextEpisode = () => {
+    setCurrentEpisode((prev) => (prev + 1) % podcastEpisodes.length);
+  };
+
+  const prevEpisode = () => {
+    setCurrentEpisode((prev) => (prev - 1 + podcastEpisodes.length) % podcastEpisodes.length);
+  };
   return (
     <section id="podcast" className="section-frame relative py-24 bg-gradient-to-br from-acadia-navy via-slate-900 to-acadia-navy overflow-hidden">
       <div className="absolute inset-0 opacity-10">
@@ -63,16 +100,16 @@ export default function MomentumPodcast() {
                 rel="noopener noreferrer"
                 className="btn-primary inline-flex items-center justify-center gap-2 group"
               >
-                Listen to Momentum
+                Listen to the Podcast
                 <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
               </a>
               <a
-                href="https://momo.castos.com/"
+                href="https://www.youtube.com/playlist?list=PL9bhmIuhdx_fzKk0al67sFiWF4Ky0v3Q-"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="btn-secondary inline-flex items-center justify-center gap-2 group"
               >
-                View All Episodes
+                View on YouTube
                 <ExternalLink className="w-5 h-5 opacity-80 group-hover:opacity-100 transition-opacity" />
               </a>
             </div>
@@ -84,53 +121,57 @@ export default function MomentumPodcast() {
 
           <div className="relative">
             <div className="absolute inset-0 bg-gradient-to-br from-acadia-coral to-acadia-gold opacity-15 rounded-3xl blur-2xl"></div>
-            <div className="relative bg-white/5 backdrop-blur-xl rounded-3xl border border-white/10 p-10 shadow-2xl">
-              <div className="flex items-center justify-between gap-6 mb-10">
-                <div>
-                  <div className="text-white font-bold text-2xl">What you’ll get</div>
-                  <div className="text-gray-300 mt-2">A fast way to learn how we think and work.</div>
-                </div>
-                <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-acadia-gold to-acadia-coral flex items-center justify-center shadow-xl">
-                  <Mic className="w-7 h-7 text-white" strokeWidth={2} />
-                </div>
-              </div>
-
-              <div className="space-y-4">
-                <div className="flex items-start gap-4 p-5 rounded-2xl bg-white/5 border border-white/10">
-                  <div className="w-2 h-2 rounded-full bg-acadia-gold mt-2"></div>
+            <div className="relative bg-white/5 backdrop-blur-xl rounded-3xl border border-white/10 overflow-hidden shadow-2xl">
+              <div className="p-6 bg-white/5 border-b border-white/10">
+                <div className="flex items-center justify-between">
                   <div>
-                    <div className="text-white font-semibold">Positioning and messaging teardowns</div>
-                    <div className="text-gray-300 text-sm mt-1">Make your value proposition obvious in under 5 seconds.</div>
+                    <div className="text-white font-bold text-xl">Watch Episodes</div>
+                    <div className="text-gray-300 text-sm mt-1">Episode {currentEpisode + 1} of {podcastEpisodes.length}</div>
                   </div>
-                </div>
-
-                <div className="flex items-start gap-4 p-5 rounded-2xl bg-white/5 border border-white/10">
-                  <div className="w-2 h-2 rounded-full bg-acadia-coral mt-2"></div>
-                  <div>
-                    <div className="text-white font-semibold">SEO + content strategy that drives pipeline</div>
-                    <div className="text-gray-300 text-sm mt-1">Topics, structure, and distribution for long sales cycles.</div>
-                  </div>
-                </div>
-
-                <div className="flex items-start gap-4 p-5 rounded-2xl bg-white/5 border border-white/10">
-                  <div className="w-2 h-2 rounded-full bg-acadia-teal mt-2"></div>
-                  <div>
-                    <div className="text-white font-semibold">Competitive analysis and GTM frameworks</div>
-                    <div className="text-gray-300 text-sm mt-1">Find your wedge and communicate it with confidence.</div>
+                  <div className="flex gap-2">
+                    <button
+                      onClick={prevEpisode}
+                      className="p-2 rounded-lg bg-white/10 hover:bg-white/20 text-white transition-all"
+                      aria-label="Previous episode"
+                    >
+                      <ChevronLeft className="w-5 h-5" />
+                    </button>
+                    <button
+                      onClick={nextEpisode}
+                      className="p-2 rounded-lg bg-white/10 hover:bg-white/20 text-white transition-all"
+                      aria-label="Next episode"
+                    >
+                      <ChevronRight className="w-5 h-5" />
+                    </button>
                   </div>
                 </div>
               </div>
+              
+              <div className="aspect-video">
+                <iframe
+                  src={`https://www.youtube.com/embed/${podcastEpisodes[currentEpisode].videoId}`}
+                  title={podcastEpisodes[currentEpisode].title}
+                  className="w-full h-full"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                ></iframe>
+              </div>
 
-              <div className="mt-10">
-                <a
-                  href="https://momo.castos.com/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-white/10 hover:bg-white/15 border border-white/15 text-white font-semibold transition-all"
-                >
-                  Open the podcast site
-                  <ExternalLink className="w-4 h-4" />
-                </a>
+              <div className="p-6">
+                <div className="flex gap-2 justify-center">
+                  {podcastEpisodes.map((episode, index) => (
+                    <button
+                      key={episode.id}
+                      onClick={() => setCurrentEpisode(index)}
+                      className={`transition-all duration-300 rounded-full ${
+                        index === currentEpisode
+                          ? 'w-12 h-3 bg-acadia-coral shadow-lg shadow-acadia-coral/50'
+                          : 'w-3 h-3 bg-white/40 hover:bg-white/60 hover:scale-125'
+                      }`}
+                      aria-label={`Go to episode ${index + 1}`}
+                    />
+                  ))}
+                </div>
               </div>
             </div>
           </div>
