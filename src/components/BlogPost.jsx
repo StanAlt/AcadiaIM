@@ -108,7 +108,15 @@ export default function BlogPost({ slug }) {
                 }}
               >
                 {post.content.split('\n').map((paragraph, index) => {
-                  // Handle headers
+                  // Handle h3 headers (### )
+                  if (paragraph.startsWith('### ')) {
+                    return (
+                      <h3 key={index} className="text-xl font-bold text-acadia-navy mt-6 mb-3">
+                        {paragraph.replace('### ', '')}
+                      </h3>
+                    );
+                  }
+                  // Handle h2 headers (## )
                   if (paragraph.startsWith('## ')) {
                     return (
                       <h2 key={index} className="text-2xl font-bold text-acadia-navy mt-8 mb-4">
