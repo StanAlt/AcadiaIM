@@ -27,6 +27,11 @@ const podcastEpisodes = [
     title: "How Agentic AI Is Eliminating Finance Workflow Pain Between Contract and Cash",
     videoId: "GKiC3ZHE_34",
   },
+  {
+    id: 6,
+    title: "Momentum Podcast Episode",
+    videoId: "CeuM-ukbWqs",
+  },
 ];
 
 export default function MomentumPodcast() {
