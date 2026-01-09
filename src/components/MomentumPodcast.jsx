@@ -29,7 +29,7 @@ const podcastEpisodes = [
   },
   {
     id: 6,
-    title: "Momentum Podcast Episode",
+    title: "How Agentic AI Is Eliminating Finance Workflow Pain Between Contract & Cash | Leonid Flek",
     videoId: "CeuM-ukbWqs",
   },
 ];
