@@ -24,11 +24,6 @@ const podcastEpisodes = [
   },
   {
     id: 5,
-    title: "How Agentic AI Is Eliminating Finance Workflow Pain Between Contract and Cash",
-    videoId: "GKiC3ZHE_34",
-  },
-  {
-    id: 6,
     title: "How Agentic AI Is Eliminating Finance Workflow Pain Between Contract & Cash | Leonid Flek",
     videoId: "CeuM-ukbWqs",
   },
