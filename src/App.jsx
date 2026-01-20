@@ -14,6 +14,7 @@ import Footer from './components/Footer';
 import Blog from './components/Blog';
 import BlogPost from './components/BlogPost';
 import Newsletter from './components/Newsletter';
+import PixelManager from './components/PixelManager';
 
 function App() {
   const [currentRoute, setCurrentRoute] = useState('home');
@@ -52,6 +53,9 @@ function App() {
 
   return (
     <div className="min-h-screen">
+      {/* Pixel Manager - Handles all tracking pixels including RB2B OEM */}
+      <PixelManager />
+      
       <Navigation />
       
       {currentRoute === 'blog' && <Blog />}

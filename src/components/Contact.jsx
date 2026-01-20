@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Send, Linkedin } from 'lucide-react';
 import confetti from 'canvas-confetti';
+import usePixelTracking from '../hooks/usePixelTracking';
 
 export default function Contact() {
   const [formData, setFormData] = useState({
@@ -11,6 +12,7 @@ export default function Contact() {
   });
 
   const [budgetError, setBudgetError] = useState('');
+  const { trackConversion, identifyUser } = usePixelTracking();
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -21,6 +23,20 @@ export default function Contact() {
     }
 
     setBudgetError('');
+    
+    // Track the conversion with all pixels (including RB2B OEM)
+    trackConversion('lead', {
+      form_name: 'growth_audit_call',
+      company: formData.company,
+      budget_range: formData.monthlyBudget,
+    });
+    
+    // Identify the user for RB2B enrichment
+    identifyUser({
+      email: formData.email,
+      name: formData.name,
+      company: formData.company,
+    });
     
     // Trigger confetti animation
     confetti({
